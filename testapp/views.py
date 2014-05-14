@@ -7,4 +7,4 @@ def func1():
     return 0
 
 def home(request):
-  return HttpResponse("hello world")
+  return render(request,'testapp/homepage.html')
