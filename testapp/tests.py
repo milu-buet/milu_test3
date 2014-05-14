@@ -1,5 +1,5 @@
 from django.test import TestCase
 
 # Create your tests here.
-def func2():
+def func3():
     return 0
