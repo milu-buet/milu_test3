@@ -8,3 +8,5 @@ def func1():
 
 def home(request):
   return render(request,'testapp/homepage.html')
+
+#def
