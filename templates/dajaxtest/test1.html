@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load dajaxice_templatetags %}
+{% load staticfiles %}
+
+<html>
+  <head>
+    <title>My base template</title>
+      <script src="/static/jquery.js"></script>
+      <script src="{% static "dajax/jquery.dajax.core.js" %}"></script>
+
+    {% dajaxice_js_import %}
+
+      <script>
+
+          function my_js_callback(data){
+                alert(data.message);
+
+              //alert(data);
+            }
+
+
+
+      </script>
+  </head>
+<body>
+       <button onclick="Dajaxice.dajaxtest.sayhello(my_js_callback);">Click here!</button>
+        <button onclick="my_js_callback('test message')">butt2</button>
+
+
+</body>
+
+</html>
