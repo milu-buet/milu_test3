@@ -12,4 +12,5 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('testapp.urls')),
+    url(r'^svg', include('svgdrawing.urls')),
 )
