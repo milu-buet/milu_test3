@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+import simplejson as json
 
 # Create your views here.
 
@@ -27,6 +28,19 @@ def post_test(request):
         for val in arrayjs:
             print val
 
+        arrayjs2 = request.POST.getlist("arrayjs2[]")
+        print arrayjs2
+
+        for val in arrayjs2:
+            print val
+
+        comarray = request.POST.get("comarray")
+        print comarray
+
+
+        py_dict = json.loads(comarray);
+        for key in py_dict:
+            print py_dict[key]
 
 
 

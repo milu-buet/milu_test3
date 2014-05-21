@@ -14,10 +14,23 @@
 
                 $("#bt1").click(function(){
 
-                    var arrayjs = []
+                    var arrayjs = [];
                     arrayjs[0] = 2;
                     arrayjs[1] = 3;
                     arrayjs[2] = 5;
+
+                    var arrayjs2 = [];
+                    arrayjs2[0] = "ab";
+                    arrayjs2[1] = "bc";
+                    arrayjs2[2] = "cd";
+
+
+                    var comarray = {};
+                    comarray['a'] = "abc";
+                    comarray['b'] = "efg";
+
+                    console.log(comarray);
+                    comarray = JSON.stringify(comarray);
 
 
                         var request = $.ajax({
@@ -26,6 +39,8 @@
                             data: {
                                 id : "testval",
                                 arrayjs : arrayjs,
+                                arrayjs2 : arrayjs2,
+                                comarray: comarray,
                                 csrfmiddlewaretoken: "{{ csrf_token }}"
                             }
                         });
