@@ -10,3 +10,7 @@ def home(request):
 
 def game1(request):
     return render(request,"games/game1.html")
+
+def game2(request):
+    return render(request,"games/game2.html")
+

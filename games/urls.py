@@ -7,4 +7,5 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'games.views.home'),
     url(r'^/game1$', 'games.views.game1'),
+    url(r'^/game2$', 'games.views.game2'),
 )
