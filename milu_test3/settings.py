@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'svgdrawing',
     'dajaxice',
     'dajax',
+    'games',
 )
 
 MIDDLEWARE_CLASSES = (
