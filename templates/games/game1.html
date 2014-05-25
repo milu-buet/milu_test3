@@ -3,27 +3,14 @@
     <head>
         <title>game test1</title>
 
-         <script src="/static/jquery.js"></script>
-
-        <script type="text/javascript" src="http://1lastletter.com/CodeProject/js/easeljs/geom/Matrix2D.js"></script>
-        <script type="text/javascript" src="http://1lastletter.com/CodeProject/js/easeljs/geom/Rectangle.js"></script>
-        <script type="text/javascript" src="http://1lastletter.com/CodeProject/js/easeljs/events/EventDispatcher.js"></script>
-        <script type="text/javascript" src="http://1lastletter.com/CodeProject/js/easeljs/utils/UID.js"></script>
-        <script type="text/javascript" src="http://1lastletter.com/CodeProject/js/easeljs/utils/Ticker.js"></script>
-        <script type="text/javascript" src="http://1lastletter.com/CodeProject/js/easeljs/utils/SpriteSheetUtils.js"></script>
-        <script type="text/javascript" src="http://1lastletter.com/CodeProject/js/easeljs/display/DisplayObject.js"></script>
-        <script type="text/javascript" src="http://1lastletter.com/CodeProject/js/easeljs/display/Container.js"></script>
-        <script type="text/javascript" src="http://1lastletter.com/CodeProject/js/easeljs/display/Stage.js"></script>
-        <script type="text/javascript" src="http://1lastletter.com/CodeProject/js/easeljs/display/SpriteSheet.js"></script>
-        <script type="text/javascript" src="http://1lastletter.com/CodeProject/js/easeljs/display/BitmapAnimation.js"></script>
-        <script type="text/javascript" src="http://1lastletter.com/CodeProject/js/easeljs/display/Graphics.js"></script>
-        <script type="text/javascript" src="http://1lastletter.com/CodeProject/js/easeljs/display/Bitmap.js"></script>
-        <script type="text/javascript" src="http://1lastletter.com/CodeProject/js/easeljs/display/Text.js"></script>
+        <script src="/static/jquery.js"></script>
+        <script src="/static/easeljs-0.7.1.min.js"></script>
 
         <script>
 
             var stage, image, fpstext;
-            var head;
+            var head,ball,up= 1,right=1;
+            var speed=8;
 
             $(document).ready(function(){
 
@@ -32,17 +19,20 @@
                 stage = new createjs.Stage(id("gameCanvas"));
                     //image = new createjs.Bitmap("assets/hill.png");
                     //stage.addChild(image);
-                createjs.Ticker.setFPS(30);
+                createjs.Ticker.setFPS(50);
                 createjs.Ticker.addEventListener("tick", tick);
 
 
-                fpstext = new createjs.Text("imran hossain naba", "20px Arial", "#7a1567");
-                fpstext.x = 0;
-                fpstext.y = 20;
-                stage.addChild(fpstext);
+                //fpstext = new createjs.Text("imran hossain", "20px Arial", "#7a1567");
+                //fpstext.x = 0;
+                //fpstext.y = 20;
+                //stage.addChild(fpstext);
 
-                var head = new createjs.drawCircle(5,5,5);
-                stage.addChild(head);
+                ball = drawCircle(100,145,40);
+
+
+                stage.addChild(ball);
+                stage.update();
                 
                 
 
@@ -52,9 +42,32 @@
             });
 
             function tick() {
-                fpstext .x += 10;
+               /* fpstext .x += 10;
                 if (fpstext .x > 600)
                     fpstext .x = 0;
+                    */
+                if(up==1){
+
+                    ball.y-=speed;
+                    if(ball.y<0) up=0;
+                }
+                else{
+
+                    ball.y+=speed;
+                    if(ball.y>400) up=1;
+                }
+
+                  if(right==0){
+
+                    ball.x-=speed;
+                    if(ball.x<0) right=1;
+                }
+                else{
+
+                    ball.x+=speed;
+                    if(ball.x>900) right=0;
+                }
+
                 stage.update();
             }
 
@@ -62,13 +75,35 @@
                 return id === null || id === undefined ? alert("Please provide element id") : document.getElementById(id);
             }
 
+
+            function drawCircle(x,y,r){
+
+                var g = new createjs.Graphics();
+                g.setStrokeStyle(1);
+                g.beginStroke(createjs.Graphics.getRGB(0,0,0));
+                g.beginFill(createjs.Graphics.getRGB(255,0,0));
+                g.drawCircle(0,0,r);
+
+                //g.drawCircle(-4,0,r/4);
+
+                var s = new createjs.Shape(g);
+                s.x = x;
+                s.y = y;
+
+
+                return s;
+
+            }
+
         </script>
 
     </head>
     <body>
-    <p>Trying a game</p>
+    <p>Revolving Ball</p>
 
-    <canvas id="gameCanvas" width="600" height="100"></canvas>
+
+
+    <canvas id="gameCanvas" width="900" height="400" style="border: 2px solid;margin-left: 15%"></canvas>
 
     </body>
     </html>
