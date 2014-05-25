@@ -1,0 +1,8 @@
+{
+  "name": "milu_test3",
+  "version": ".0",
+  "devDependencies": {
+        "jquery": "~2.0.2",
+        "EaselJS": ""
+  }
+}
