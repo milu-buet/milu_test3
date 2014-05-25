@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'dajaxice',
     'dajax',
     'games',
+    'djangobower',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -86,7 +87,22 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = os.path.join(BASE_DIR,'static').replace('\\','/'),
+STATIC_ROOT = os.path.join(BASE_DIR,'static2').replace('\\','/')
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR,'static').replace('\\','/'),
+
+)
+
+# BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR,'bower_components').replace('\\','/')
+BOWER_COMPONENTS_ROOT = BASE_DIR
+BOWER_PATH = '/usr/bin/bower'
+
+BOWER_INSTALLED_APPS = (
+    'jquery#2.0.2',
+    'EaselJS',
+)
+
 
 
 TEMPLATE_DIRS = (
@@ -106,11 +122,12 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.media',
     'django.core.context_processors.static',
     'django.core.context_processors.request',
-    'django.contrib.messages.context_processors.messages'
+    'django.contrib.messages.context_processors.messages',
 )
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'dajaxice.finders.DajaxiceFinder',
+    'djangobower.finders.BowerFinder',
 )
