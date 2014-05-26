@@ -13,7 +13,7 @@
         <script>
 
             var stage, image, fpstext;
-            var head,ball,up= 1,right=1;
+            var head,ball;
             var speed=8;
             var man1,man2,man3;
 
@@ -39,9 +39,9 @@
                 //head  = drawHead(120,145,50);
                 //stage.addChild(head);
 
-                man1 = new DrawMan(100,180,15,stage);
+                //man1 = new DrawMan(100,180,15,stage);
 
-                man2 = new DrawMan(150,145,30,stage);
+                //man2 = new DrawMan(150,145,30,stage);
 
                 man3 = new DrawMan(250,80,50,stage);
 
@@ -60,9 +60,14 @@
 
             function tick() {
 
-                man1.waveHand()
-                man2.waveHand()
-                man3.waveHand();
+                //man1.waveHand()
+                //man2.waveHand()
+                //man3.waveHand();
+                man3.lefthandup = man3.wave(man3.lefthandup,man3.lefthand);
+                man3.righthandup = man3.wave(man3.righthandup,man3.righthand);
+                man3.leftlegup = man3.wave(man3.leftlegup,man3.leftleg);
+                man3.rightlegup = man3.wave(man3.rightlegup,man3.rightleg);
+
                 stage.update();
             }
 
@@ -142,7 +147,8 @@
 
             function drawRightLeg(x,y,size){
 
-                return drawLine(x,y,0,4*size,size,6*size);
+                var s = drawLine(x,y+4*size,0,0,size,2*size);
+                return s
 
             }
 
@@ -165,6 +171,11 @@
                 this.name = "name";
                 this.upwave = 1;
 
+                this.lefthandup=1;
+                this.righthandup=0;
+                this.leftlegup=1;
+                this.rightlegup=0;
+
 
             }
 
@@ -173,6 +184,36 @@
                     return this.name;
 
             };
+
+            DrawMan.prototype.wave = function(up,organ){
+
+                if(up==1){
+
+                    organ.rotation+=3;
+
+                    if(organ.rotation>45){
+
+
+                        up=0;
+
+                    }
+
+                }
+                else{
+                    organ.rotation-=3;
+
+                    if(organ.rotation<-45){
+
+                        up=1;
+                    }
+
+
+
+
+                }
+
+                return up;
+            }
 
             DrawMan.prototype.waveHand = function(){
 
