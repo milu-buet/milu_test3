@@ -15,6 +15,7 @@
             var stage, image, fpstext;
             var head,ball,up= 1,right=1;
             var speed=8;
+            var man1,man2,man3;
 
             $(document).ready(function(){
 
@@ -35,8 +36,16 @@
                 //ball = drawCircle(100,145,40);
                 //stage.addChild(ball)
 
-                head  = drawHead(120,145,50);
-                stage.addChild(head);
+                //head  = drawHead(120,145,50);
+                //stage.addChild(head);
+
+                man1 = new DrawMan(100,180,15,stage);
+
+                man2 = new DrawMan(150,145,30,stage);
+
+                man3 = new DrawMan(250,80,50,stage);
+
+
 
 
                 //;
@@ -51,7 +60,9 @@
 
             function tick() {
 
-
+                man1.waveHand()
+                man2.waveHand()
+                man3.waveHand();
                 stage.update();
             }
 
@@ -68,16 +79,16 @@
                 g.drawCircle(0,0,r);
 
                 g.beginStroke(createjs.Graphics.getRGB(0,0,0));
-                g.drawCircle(-20,-8,r/6);
+                g.drawCircle(-1*r/2.5,-1*r/6.1,r/6);
 
                 g.beginStroke(createjs.Graphics.getRGB(0,0,0));
-                g.drawCircle(20,-8,r/6);
+                g.drawCircle(r/2.5,-1*r/6.1,r/6);
 
                 g.beginStroke(createjs.Graphics.getRGB(0,0,0));
-                g.drawCircle(0,14,r/8);
+                g.drawCircle(0,r/3.1,r/8);
 
                 g.beginStroke(createjs.Graphics.getRGB(0,0,0));
-                g.drawEllipse(-10,25,r/2.5,r/5);
+                g.drawEllipse(-1*r/5,r/2,r/2.5,r/5);
 
 
                 var s = new createjs.Shape(g);
@@ -88,16 +99,114 @@
 
             }
 
-            function drawMan(x,y){
+            function drawLine(x,y,x1,y1,x2,y2){
+                 var g = new createjs.Graphics();
+                 g.setStrokeStyle(1);
+                 g.beginStroke(createjs.Graphics.getRGB(0,0,0));
 
-                var head =  drawHead(x,y,50);
+                 g.moveTo(x1,y1);
+                 g.lineTo(x2,y2);
+                 g.endStroke();
 
+                var s = new createjs.Shape(g);
+                s.x = x;
+                s.y = y;
 
+                return s;
 
+            }
 
+            function drawMiddleBody(x,y,size){
+                return drawLine(x,y,0,size,0,4*size);
+            }
+
+            function drawLeftHand(x,y,size){
+                var s = drawLine(x,y+size+5,0,0,-size,size);
+                return s;
+
+            }
+
+           function drawLeftLeg(x,y,size){
+
+               var s = drawLine(x,y+4*size,0,0,-size,2*size);
+                return s
+
+            }
+
+            function drawRightHand(x,y,size){
+
+                var s = drawLine(x,y+size+5,0,0,size,size);
+                return s
+
+            }
+
+            function drawRightLeg(x,y,size){
+
+                return drawLine(x,y,0,4*size,size,6*size);
+
+            }
+
+            function DrawMan(x,y,size,stage){
+
+                this.head =  drawHead(x,y,size);
+                this.mbody = drawMiddleBody(x,y,size);
+                this.lefthand = drawLeftHand(x,y,size);
+                this.righthand = drawRightHand(x,y,size);
+                this.leftleg = drawLeftLeg(x,y,size);
+                this.rightleg = drawRightLeg(x,y,size);
+
+                stage.addChild(this.head);
+                stage.addChild(this.mbody);
+                stage.addChild(this.lefthand);
+                stage.addChild(this.righthand);
+                stage.addChild(this.leftleg);
+                stage.addChild(this.rightleg);
+
+                this.name = "name";
+                this.upwave = 1;
 
 
             }
+
+            DrawMan.prototype.toString = function(){
+
+                    return this.name;
+
+            };
+
+            DrawMan.prototype.waveHand = function(){
+
+                if(this.upwave==1){
+
+                    this.lefthand.rotation+=3;
+                    this.leftleg.rotation+=3;
+                    this.righthand.rotation-=3;
+
+                    if(this.lefthand.rotation>60){
+
+
+                        this.upwave = 0;
+                    }
+                   // console.log( this.lefthand.rotation);
+
+                }
+                else{
+
+                    this.lefthand.rotation-=3;
+                    this.leftleg.rotation-=3;
+                    this.righthand.rotation+=3;
+                     if(this.lefthand.rotation<-30){
+
+
+                        this.upwave = 1;
+                    }
+
+
+
+                }
+
+
+            };
 
         </script>
 
