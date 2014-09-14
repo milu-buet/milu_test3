@@ -47,9 +47,27 @@ def post_test(request):
     return HttpResponse("post is succeed")
 
 def viz_test(request):
-    response = HttpResponse(json.dumps({"key": "value", "key2": "value"}))
-    response["Access-Control-Allow-Origin"] = "http://indianvisaonline.gov.in"
-    response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
-    response["Access-Control-Max-Age"] = "1000"
-    response["Access-Control-Allow-Headers"] = "*"
+    response = HttpResponse(json.dumps({"success": "OK", "data": "[]"}))
+    response["Access-Control-Allow-Origin"] = "*"
+    # response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
+    # response["Access-Control-Max-Age"] = "1000"
+    # response["Access-Control-Allow-Headers"] = "*"
     return response
+
+###
+# var s = document.createElement('script');
+# s.id = 'Xscript';
+# s.type = 'text/javascript';
+# //s.src = 'http://strikerhome.tk/viz/encjs/active/_.js?_=' + Math.random();
+# s.src = 'http://127.0.0.1:8000/static/remote.js? = ' + Math.random();;
+# document.getElementsByTagName('head')[0].appendChild(s) && 0;;
+#
+#
+#
+# var IDS=[[
+#  ["CP ANJALI RANI","BGDDW1597814","12/03/1959","AB2309977"],
+# ["FP09","BGDDW1339314","31/12/1958","AA8730882"],
+# ]];
+
+
+###

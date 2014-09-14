@@ -42,16 +42,21 @@ INSTALLED_APPS = (
     'dajax',
     'games',
     'djangobower',
+    'corsheaders',
 )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 )
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'milu_test3.urls'
 
@@ -101,6 +106,7 @@ BOWER_PATH = '/usr/bin/bower'
 BOWER_INSTALLED_APPS = (
     'jquery#2.0.2',
     'EaselJS',
+
 )
 
 

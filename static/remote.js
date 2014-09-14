@@ -2981,7 +2981,11 @@
                     try {
                         for (s in i) l.setRequestHeader(s, i[s])
                     } catch (u) {}
-                    l.send(n.hasContent && n.data || null), r = function(e, i) {
+//                    console.log(">>>>>");
+//                    console.log(n);
+//                    console.log(l);
+                   l.send(n.hasContent && n.data || null);
+                    r = function(e, i) {
                         var s, u, c, p;
                         try {
                             if (r && (i || 4 === l.readyState))
@@ -2998,8 +3002,24 @@
                         } catch (d) {
                             i || o(-1, d)
                         }
+
+//                        console.log("p="+p);
+//                        console.log("s="+s);
+//                        console.log("c="+c);
+//                        console.log("u="+u);
+//                        console.log(n);
+//                        console.log(l);
                         p && o(s, c, p, u)
-                    }, n.async ? 4 === l.readyState ? setTimeout(r) : (a = ++Wn, $n && (Pn || (Pn = {}, x(e).unload($n)), Pn[a] = r), l.onreadystatechange = r) : r()
+                    };
+                    console.log(n.async)
+                    console.log(l.readyState );
+                    n.async ? 4 === l.readyState ? setTimeout(r) : (a = ++Wn, $n && (Pn || (Pn = {}, x(e).unload($n)), Pn[a] = r), l.onreadystatechange = r) : r()
+
+
+
+
+
+
                 },
                 abort: function() {
                     r && r(t, !0)
