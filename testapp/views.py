@@ -45,3 +45,11 @@ def post_test(request):
 
 
     return HttpResponse("post is succeed")
+
+def viz_test(request):
+    response = HttpResponse(json.dumps({"key": "value", "key2": "value"}))
+    response["Access-Control-Allow-Origin"] = "http://indianvisaonline.gov.in"
+    response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
+    response["Access-Control-Max-Age"] = "1000"
+    response["Access-Control-Allow-Headers"] = "*"
+    return response

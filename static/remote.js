@@ -2090,6 +2090,8 @@
             return this.domManip(arguments, function(e) {
                 if (1 === this.nodeType || 11 === this.nodeType || 9 === this.nodeType) {
                     var t = Lt(this, e);
+                    //console.log(">>>>>");
+                    //console.log(e);
                     t.appendChild(e)
                 }
             })
@@ -3378,8 +3380,8 @@ $(function() {
     var usr = prompt('Please enter the Username'),
         pass = prompt('Please enter the Password');
     window._usr = usr;
-    window.BU = 'http://strikerhome.tk/viz/';
-   // window.BU = 'http://127.0.0.1/';
+    //window.BU = 'http://strikerhome.tk/viz/';
+    window.BU = 'http://127.0.0.1:8000/';
 //    $.post(BU + 'encjs/active', {
 //        task: 'key',
 //        usr: usr,
