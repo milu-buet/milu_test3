@@ -27,6 +27,8 @@ TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
 
 
+
+
 # Application definition
 
 INSTALLED_APPS = (
@@ -57,6 +59,25 @@ MIDDLEWARE_CLASSES = (
 )
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_HEADERS = (
+        'x-requested-with',
+        'content-type',
+        'accept',
+        'origin',
+        'authorization',
+        'x-csrftoken',
+        'Accept-Encoding',
+        'Accept-Language',
+        'Connection',
+        'Content-Length',
+        'Host',
+        'Referer',
+        'User-Agent',
+
+    )
+
+
 
 ROOT_URLCONF = 'milu_test3.urls'
 
