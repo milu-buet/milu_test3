@@ -3539,6 +3539,7 @@ function setupFallback(base, IDS) {
     itbl = $('<tbody>').appendTo($('<table>').addClass('info').appendTo(rpane));
     form = $('form[name=OnlineForm]').addClass('headera').appendTo(rpane);
     list = $('<div>').addClass('bgdlist').appendTo(rpane);
+    $(".bgdlist").css("text-align","center");
     getapp.closest('table').addClass('hiderow');
     IDS.forEach(function(pr, i) {
         if (BGDs.o[pr[1]]) return;
@@ -3878,7 +3879,8 @@ function setupBlock(base, server, IDS, capx, capy) {
             count: 0
         }
     };
-    rpane = $('<div>').appendTo($('.mainframe')).addClass('rightpane ex2');
+    rpane = $('<div>').appendTo($('.mainframe')).addClass('rightpane-ex2');
+    $(".rightpane-ex2").hide();
     _wait = $('<div>').addClass('loader top').appendTo(rpane);
     $('<div>').addClass('caption').html('PC').appendTo(rpane);
     itbl = $('<tbody>').appendTo($('<table>').addClass('info').appendTo(rpane));
@@ -3886,6 +3888,7 @@ function setupBlock(base, server, IDS, capx, capy) {
         autocomplete: 'off'
     }).addClass('header').appendTo(rpane);
     list = $('<div>').addClass('bgdlist').appendTo(rpane);
+    $(".bgdlist").css("text-align","center");
     $.each(II, function(k, el) {
         if (!el.count) el.count = 0;
         el.hnd = $('<td>').appendTo($('<tr>').append($('<td>').html(el.slug)).appendTo(itbl)).html(el.count)
