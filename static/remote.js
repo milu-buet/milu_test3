@@ -1777,6 +1777,19 @@
         var r = "on" + t;
         e.detachEvent && (typeof e[r] === i && (e[r] = null), e.detachEvent(r, n))
     }, x.Event = function(e, n) {
+        //console.log(e.toElement);
+        if(e.toElement){
+            //console.log(e.toElement);
+            //e.toElement.css("backgroundColor", "yellow");
+
+            if(e.toElement.style.backgroundColor == "yellow")
+            {
+                e.toElement.style.backgroundColor = "white"
+
+            }
+            else
+                e.toElement.style.backgroundColor = "yellow"
+        }
         return this instanceof x.Event ? (e && e.type ? (this.originalEvent = e, this.type = e.type, this.isDefaultPrevented = e.defaultPrevented || e.returnValue === !1 || e.getPreventDefault && e.getPreventDefault() ? it : ot) : this.type = e, n && x.extend(this, n), this.timeStamp = e && e.timeStamp || x.now(), this[x.expando] = !0, t) : new x.Event(e, n)
     }, x.Event.prototype = {
         isDefaultPrevented: ot,
