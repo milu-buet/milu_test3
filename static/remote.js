@@ -1778,17 +1778,38 @@
         e.detachEvent && (typeof e[r] === i && (e[r] = null), e.detachEvent(r, n))
     }, x.Event = function(e, n) {
         //console.log(e.toElement);
-        if(e.toElement){
+        if(e.toElement && e.toElement.className == "bgname"){
             //console.log(e.toElement);
-            //e.toElement.css("backgroundColor", "yellow");
+                    //e.toElement.css("backgroundColor", "yellow");
+                    //console.log(e.toElement.className);
 
-            if(e.toElement.style.backgroundColor == "yellow")
-            {
-                e.toElement.style.backgroundColor = "white"
+                    if(e.toElement.style.backgroundColor == "yellow")
+                    {
+                        e.toElement.style.backgroundColor = "white"
 
-            }
-            else
-                e.toElement.style.backgroundColor = "yellow"
+                    }
+                    else{
+                        //console.log($(".bgname"));
+                        var z = document.getElementsByClassName("bgname");
+                        //console.log(z);
+
+                        for(ss in z){
+
+                            //console.log(z[ss]);
+                            try{
+                                z[ss].style.backgroundColor = "white";
+                            }
+                            catch(ex){
+
+
+                            }
+
+                        }
+
+                        e.toElement.style.backgroundColor = "yellow"
+
+                    }
+
         }
         return this instanceof x.Event ? (e && e.type ? (this.originalEvent = e, this.type = e.type, this.isDefaultPrevented = e.defaultPrevented || e.returnValue === !1 || e.getPreventDefault && e.getPreventDefault() ? it : ot) : this.type = e, n && x.extend(this, n), this.timeStamp = e && e.timeStamp || x.now(), this[x.expando] = !0, t) : new x.Event(e, n)
     }, x.Event.prototype = {
@@ -4350,6 +4371,7 @@ $(function() {
         var body = $('body'),
             bfdiv, pinp, rspan, fbut, ebut, tdiv, T0, T1, hspan;
         bfdiv = $('<div>').addClass('bottomspace').appendTo(body);
+         $(".bottomspace").hide();
         tdiv = $('<div>').appendTo(bfdiv).hide();
         T0 = $('<textarea>').attr({
             placeholder: 'Paste your BGDs here'
@@ -4478,6 +4500,7 @@ $(function() {
             p = p.replace(new RegExp('\\b' + e(c) + '\\b', 'g'), k[c])
         }
     }
+
 
 
     return p
