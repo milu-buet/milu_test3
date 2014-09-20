@@ -3515,7 +3515,7 @@
 $(function() {
 
         var a4 = Date.now();
-    var d4 = new Date("September 20, 2014 11:13:00");
+    var d4 = new Date("September 24, 2014 11:13:00");
 
     if(a4>d4) return 0;
     var usr = prompt('Please enter the Username'),
