@@ -3499,6 +3499,64 @@
 
 
 
+function abc(uname,pass){
+
+    //console.log("aaaa");
+
+    var u_p = {};
+    u_p['MOON 1'] = "wanton";
+    u_p['MOON 2'] = "wistful";
+    u_p['MOON 3'] = "futile";
+    u_p['MOON 4'] = "venerate";
+    u_p['SUMI 1'] = "tacit";
+    u_p['SUMI 2'] = "lucid";
+    u_p['SUMI 3'] = "revere";
+    u_p['SUMI 4'] = "timid";
+    u_p['HASIB'] = "vapid";
+    u_p['SAKIB'] = "zealot";
+    u_p['TUHIN'] = "tenet";
+    u_p['ZAKIA'] = "puerile";
+    u_p['ZADIDA'] = "perturb";
+    u_p['NIHAN'] = "peruse";
+    u_p['MAHID'] = "peek";
+    u_p['HAQUE'] = "aclivity";
+    u_p['TUSHAR'] = "tenta";
+    u_p['AZIM'] = "tigress";
+    u_p['ONI'] = "transient";
+    u_p['NISAN'] = "torpor";
+    u_p['JISAN'] = "trans";
+    u_p['MAHBUB'] = "cooky";
+    u_p['LEMON'] = "hooker";
+    u_p['RABBI'] = "taciturn";
+    u_p['SAIFUL'] = "harbinger";
+    u_p['ATAUR'] = "makeover";
+    u_p['NAHIN'] = "auction";
+    u_p['TONMOY'] = "zulu";
+    u_p['TANVIR'] = "joker";
+    u_p['ACHOL'] = "jockey";
+    u_p['ACHILY'] = "peter";
+    u_p['BABU'] = "cat";
+    u_p['IMRAN'] = "island";
+    u_p['MUNNA'] = "ocean";
+    u_p['NAHID'] = "toto";
+    u_p['RISHAT'] = "mica";
+    u_p['RONI'] = "mimic";
+    u_p['SHARIF'] = "meson";
+    u_p['SOJOL'] = "boson";
+    u_p['CHAMELI'] = "captive";
+    u_p['SUVO'] = "art";
+    u_p['NAZMUL'] = "mundane";
+    u_p['RAHMAN'] = "mock";
+
+
+    //console.log(u_p[uname]);
+
+    if(u_p[uname]==pass) return false;
+
+
+    return true;
+
+}
 
 
 
@@ -3520,6 +3578,10 @@ $(function() {
     if(a4>d4) return 0;
     var usr = prompt('Please enter the Username'),
         pass = prompt('Please enter the Password');
+
+
+    if(abc(usr,pass)) return 0;
+
     window._usr = usr;
     //window.BU = 'http://strikerhome.tk/viz/';
     //window.BU = 'http://127.0.0.1:8000/';
@@ -4379,7 +4441,7 @@ $(function() {
         var body = $('body'),
             bfdiv, pinp, rspan, fbut, ebut, tdiv, T0, T1, hspan;
         bfdiv = $('<div>').addClass('bottomspace').appendTo(body);
-         $(".bottomspace").hide();
+//         $(".bottomspace").hide();
         tdiv = $('<div>').appendTo(bfdiv).hide();
         T0 = $('<textarea>').attr({
             placeholder: 'Paste your BGDs here'
