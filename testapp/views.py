@@ -13,7 +13,7 @@ def home(request):
   return render(request,'testapp/homepage.html')
 
 def portfolio(request):
-    return render(request,'testapp/index.html')
+    return render(request,'OnePage/index.html')
 
 def post_test(request):
 
