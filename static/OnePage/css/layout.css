@@ -343,6 +343,24 @@ ul#nav li.current a { color: #F06000; }
   	-webkit-animation: django 2s ease;
 }
 
+.cp {
+  	width: 90%;
+  	-moz-animation: cp 2s ease;
+  	-webkit-animation: cp 2s ease;
+}
+
+.java {
+  	width: 80%;
+  	-moz-animation: java 2s ease;
+  	-webkit-animation: java 2s ease;
+}
+
+
+.javascript {
+  	width: 80%;
+  	-moz-animation: javascript 2s ease;
+  	-webkit-animation: javascript 2s ease;
+}
 /*.illustrator {*/
   	/*width: 55%;*/
   	/*-moz-animation: illustrator 2s ease;*/
@@ -354,7 +372,7 @@ ul#nav li.current a { color: #F06000; }
   	/*-webkit-animation: wordpress 2s ease;*/
 /*}*/
 .css {
-  	width: 90%;
+  	width: 70%;
   	-moz-animation: css 2s ease;
   	-webkit-animation: css 2s ease;
 }
@@ -364,7 +382,7 @@ ul#nav li.current a { color: #F06000; }
   	-webkit-animation: html5 2s ease;
 }
 .jquery {
-  	width: 50%;
+  	width: 70%;
   	-moz-animation: jquery 2s ease;
   	-webkit-animation: jquery 2s ease;
 }
