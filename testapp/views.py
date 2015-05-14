@@ -15,6 +15,9 @@ def home(request):
 def portfolio(request):
     return render(request,'OnePage/index.html')
 
+def mail_me(request):
+    return HttpResponse("Sent")
+
 def post_test(request):
 
     if request.method == "POST" and request.is_ajax:
