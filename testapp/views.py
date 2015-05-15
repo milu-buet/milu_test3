@@ -1,3 +1,4 @@
+import smtplib
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseBadRequest
 import simplejson as json
@@ -37,12 +38,41 @@ def mail_me(request):
 
 
     if msg == "OK":
-        pass
-        #to do msg send
+
+        try:
+           TO = ["milu.buet@gmail.com"]
+           FROM = contactEmail
+           SUBJECT = contactSubject
+           TEXT = contactMessage
+
+           message = """\
+                From: %s
+                To: %s
+                Subject: %s
+
+                %s
+                """ % (FROM, ", ".join(TO), SUBJECT, TEXT)
+
+
+           send_mail(FROM,TO,message)
+        except Exception as e:
+            pass
+            print e
+            msg = "ERROR SENDING!"
+
 
 
 
     return HttpResponse(msg)
+
+
+def send_mail(FROM,TO,message):
+    server = smtplib.SMTP('localhost')
+    server.sendmail(FROM, TO, message)
+    server.quit()
+
+
+
 
 def post_test(request):
 
