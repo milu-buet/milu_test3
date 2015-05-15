@@ -163,7 +163,7 @@
 
        posting.fail(function(){
 
-           msg = "error!"
+           msg = "ERROR!"
            $('#image-loader').fadeOut();
            $('#message-warning').html(msg);
 	       $('#message-warning').fadeIn();

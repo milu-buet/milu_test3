@@ -16,8 +16,33 @@ def portfolio(request):
     return render(request,'OnePage/index.html')
 
 def mail_me(request):
-    print request.POST
-    return HttpResponse("OK")
+    #print request.POST
+
+    contactEmail = request.POST['contactEmail']
+    contactSubject = request.POST['contactSubject']
+    contactName = request.POST['contactName']
+    contactMessage = request.POST['contactMessage']
+
+    msg = "OK"
+
+    if len(contactEmail) == 0 or len(contactName) == 0 or len(contactMessage) == 0:
+        msg = "ERROR!"
+
+        if len(contactName) == 0:
+            msg = msg+"<br> Name can't be empty!"
+        if len(contactEmail) == 0:
+            msg = msg+"<br> Enter valid email address!"
+        if len(contactMessage) == 0:
+            msg = msg+"<br> Empty message body!"
+
+
+    if msg == "OK":
+        pass
+        #to do msg send
+
+
+
+    return HttpResponse(msg)
 
 def post_test(request):
 
