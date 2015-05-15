@@ -16,7 +16,8 @@ def portfolio(request):
     return render(request,'OnePage/index.html')
 
 def mail_me(request):
-    return HttpResponse("Sent")
+    print request.POST
+    return HttpResponse("OK")
 
 def post_test(request):
 

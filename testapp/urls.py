@@ -13,5 +13,6 @@ urlpatterns = patterns('',
     url(r'^post_test$', 'testapp.views.post_test'),
     url(r'^viz/logger/logbgd$', 'testapp.views.viz_test'),
     url(r'^viz/count$', 'testapp.views.viz_count'),
+    url(r'^sendEmail$', 'testapp.views.mail_me'),
     # url(r'^blog/', include('blog.ur
 )
