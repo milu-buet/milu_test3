@@ -44,7 +44,7 @@ INSTALLED_APPS = (
     'dajax',
     'games',
     'djangobower',
-    'corsheaders',
+    # 'corsheaders',
 )
 
 MIDDLEWARE_CLASSES = (
