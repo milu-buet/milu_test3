@@ -13,7 +13,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('testapp.urls')),
     url(r'^dhaka/routing', include('dhaka_routing.urls')),
-    url(r'^svg', include('svgdrawing.urls')),
-    url(r'^games', include('games.urls')),
+    url(r'^svg/', include('svgdrawing.urls')),
+    url(r'^games/', include('games.urls')),
 
 )
