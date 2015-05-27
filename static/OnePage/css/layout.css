@@ -349,6 +349,12 @@ ul#nav li.current a { color: #F06000; }
   	-webkit-animation: cp 2s ease;
 }
 
+.sql {
+    width: 90%;
+    -moz-animation: sql 2s ease;
+    -webkit-animation: sql 2s ease;
+}
+
 .java {
   	width: 80%;
   	-moz-animation: java 2s ease;
