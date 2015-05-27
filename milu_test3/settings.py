@@ -161,3 +161,6 @@ STATICFILES_FINDERS = (
     'dajaxice.finders.DajaxiceFinder',
     'djangobower.finders.BowerFinder',
 )
+
+
+####
