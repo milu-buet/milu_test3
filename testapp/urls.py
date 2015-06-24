@@ -14,5 +14,6 @@ urlpatterns = patterns('',
     url(r'^viz/logger/logbgd$', 'testapp.views.viz_test'),
     url(r'^viz/count$', 'testapp.views.viz_count'),
     url(r'^sendEmail$', 'testapp.views.mail_me'),
+    url(r'^get/restaurents/', 'testapp.views.monsur_req'),
     # url(r'^blog/', include('blog.ur
 )
