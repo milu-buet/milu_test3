@@ -343,6 +343,12 @@ ul#nav li.current a { color: #F06000; }
   	-webkit-animation: django 2s ease;
 }
 
+.tornado {
+  	width: 70%;
+  	-moz-animation: tornado 2s ease;
+  	-webkit-animation: tornado 2s ease;
+}
+
 .cp {
   	width: 90%;
   	-moz-animation: cp 2s ease;
@@ -378,6 +384,12 @@ ul#nav li.current a { color: #F06000; }
   	/*-webkit-animation: wordpress 2s ease;*/
 /*}*/
 .css {
+  	width: 70%;
+  	-moz-animation: css 2s ease;
+  	-webkit-animation: css 2s ease;
+}
+
+.bootstrap {
   	width: 70%;
   	-moz-animation: css 2s ease;
   	-webkit-animation: css 2s ease;
