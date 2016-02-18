@@ -5,6 +5,7 @@ import simplejson as json
 
 # Create your views here.
 from django.utils import simplejson
+from django.views.generic import TemplateView
 
 
 def func1():
@@ -152,3 +153,8 @@ def monsur_req(request):
 
 
 ###
+
+
+class Maptest(TemplateView):
+    template_name = 'testapp/gmap.html'
+    pass

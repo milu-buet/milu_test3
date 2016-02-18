@@ -1,0 +1,73 @@
+<html>
+	<head>
+
+		<style type="text/css">
+			      html, body { height: 100%; margin: 0; padding: 0; }
+			      #map1 { 
+			      	height: 100%;
+			      	z-index: 0;
+			      }
+			      #aplace {
+			      	 	background-color: #000;
+					    position: absolute;
+					    height: 185px;
+					    width: 415px;
+					    opacity: 0.30;
+					    color: #FFF;
+					    bottom: 0px;
+					    z-index: 2;
+					    float: right;
+			      }
+    	</style>
+        <script src="/static/jquery.js"></script>
+
+	</head>
+
+	<body>
+		<button onclick="addMarker()">click</button>
+		<div id="map1">	</div>
+		<div id="aplace">transparent div test</div>
+
+
+
+
+		<script type="text/javascript">
+
+
+		</script>
+		<script type="text/javascript">
+
+				var map;
+				function initMap() {
+				  map = new google.maps.Map(document.getElementById('map1'), {
+				    center: {lat: 23.793712, lng: 90.3989},
+				    zoom: 12
+				  });
+				}
+
+				var marker;
+				var myLatLng;
+				function addMarker(){
+
+						myLatLng = {lat: 23.793712, lng: 90.3989};
+
+						marker = new google.maps.Marker({
+								    position: myLatLng,
+								    map: map,
+								    title: 'Hello World!'
+								  });
+
+
+				}
+
+
+
+
+
+    	</script>
+
+		<script async defer
+      			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBazJhgQymF0euR2hJ4W3OuKBT3bzuAK0E&callback=initMap">
+    	</script>
+	</body>
+</html>

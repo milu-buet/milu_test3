@@ -1,3 +1,5 @@
+from testapp.views import Maptest
+
 __author__ = 'milu'
 
 from django.conf.urls import patterns, include, url
@@ -15,5 +17,6 @@ urlpatterns = patterns('',
     url(r'^viz/count$', 'testapp.views.viz_count'),
     url(r'^sendEmail$', 'testapp.views.mail_me'),
     url(r'^get/restaurents/', 'testapp.views.monsur_req'),
+    url(r'^map/', Maptest.as_view()),
     # url(r'^blog/', include('blog.ur
 )
