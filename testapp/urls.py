@@ -5,6 +5,17 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
+from dashing.utils import router
+
+
+from widgets import *
+#from widgets import NewClientsWidget
+router.register(NewClientsWidget, 'new_widget')
+router.register(MyListWidget, 'new_list_widget')
+router.register(MyGraphWidget, 'new_graph_widget')
+router.register(MyMapWidget, 'new_map_widget')
+
+
 urlpatterns = patterns('',
     # Examples:
     #url(r'^$', 'testapp.views.home'),
@@ -16,4 +27,5 @@ urlpatterns = patterns('',
     url(r'^sendEmail$', 'testapp.views.mail_me'),
     url(r'^get/restaurents/', 'testapp.views.monsur_req'),
     # url(r'^blog/', include('blog.ur
+    url(r'^dashboard/', include(router.urls)),
 )
