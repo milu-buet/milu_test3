@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
+from dashing.utils import router
 
 
 admin.autodiscover()
@@ -15,5 +16,6 @@ urlpatterns = patterns('',
     url(r'^dhaka/routing', include('dhaka_routing.urls')),
     url(r'^svg/', include('svgdrawing.urls')),
     url(r'^games/', include('games.urls')),
+    url(r'^dashboard/', include(router.urls)),
 
 )

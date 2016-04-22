@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'djangobower',
     # 'corsheaders',
     'dhaka_routing',
+    'dashing',
 )
 
 MIDDLEWARE_CLASSES = (
