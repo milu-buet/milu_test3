@@ -158,3 +158,80 @@ def monsur_req(request):
 class Maptest(TemplateView):
     template_name = 'testapp/gmap.html'
     pass
+
+
+
+
+import  plotly.offline as py
+import plotly.graph_objs as go
+
+class PlotlyTest(TemplateView):
+    template_name = 'testapp/plotbar.html'
+
+    def get_context_data(self, **kwargs):
+        if 'view' not in kwargs:
+            kwargs['view'] = self
+
+        kwargs['av'] = 12
+        html  =self.get_plotly_obj()
+        buble = self.get_bubble_obj()
+        kwargs['html'] = html
+        kwargs['buble'] = buble
+        return kwargs
+
+
+    def get_plotly_obj(self):
+        import plotly
+        from plotly.graph_objs import Scatter, Layout
+
+        print plotly.__version__  # version >1.9.4 required
+
+        html = plotly.offline.plot({
+        "data": [
+            Scatter(x=[1, 2, 3, 4], y=[4, 1, 3, 7])
+        ],
+        "layout": Layout(
+            title="Simple Graph"
+        )
+        },output_type='div')
+
+        print(html)
+        return html
+
+    def get_line_obj(self):
+        pass
+        trace1 = go.Scatter(
+            x = [1,2], y = [1,2]
+        )
+
+        trace2 = go.Scatter(
+            x = [1,2], y =[2,1]
+        )
+
+        return py.plot([trace1,trace2],output_type='div')
+
+    def get_bubble_obj(self):
+        pass
+        trace = go.Scatter(
+            x = [1,2,3], y = [1,2,3],
+            marker = dict(
+                color = ['red','blue','green'],
+                size = [30,80,200],
+            ),
+            mode = 'markers'
+        )
+
+        layout = go.Layout(
+            showlegend = True,
+            title = 'Simple Buble'
+        )
+
+        fig = go.Figure(
+            data = [trace],
+            layout = layout
+        )
+
+
+
+        return py.plot(fig,output_type='div')
+

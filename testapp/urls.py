@@ -1,4 +1,4 @@
-from testapp.views import Maptest
+from testapp.views import *
 
 __author__ = 'milu'
 
@@ -31,4 +31,6 @@ urlpatterns = patterns('',
     url(r'^map/', Maptest.as_view()),
     # url(r'^blog/', include('blog.ur
     url(r'^dashboard/', include(router.urls)),
+
+    url(r'^plotly/', PlotlyTest.as_view()),
 )

@@ -25,7 +25,7 @@ class NewClientsWidget(NumberWidget):
 
 
 class MyListWidget(ListWidget):
-    title = 'New List'
+    title = 'Solar Mass Index'
 
     def get_data(self):
         dummy_data = [
@@ -34,17 +34,19 @@ class MyListWidget(ListWidget):
                     {'label': 'Moon', 'value': 2},
                     {'label': 'Mars', 'value': 12},
                     {'label': 'Jupitar', 'value': 30},
+                    {'label': 'Pluto', 'value': 9},
+                    {'label': 'Venus', 'value': 11},
                      ]
         return dummy_data
     
 
     def get_more_info(self):
-        sample_info = 'this is a list'
-        return '{} Wow!'.format(sample_info)
+        sample_info = 'List of solar objects'
+        return '{} and mass index'.format(sample_info)
 
 
 class MyGraphWidget(GraphWidget):
-    title = 'New Graph'
+    title = 'Population Rate'
 
     def get_data(self):
         dummy_data = [
@@ -64,7 +66,9 @@ class MyGraphWidget(GraphWidget):
 
 class MyMapWidget(MapWidget):
     title = 'New Map'
-    zoom = 4
+    zoom = 12
+    center = {'lat': 23.811378365396163,'lng':90.41298508644104}
+    markers = [{'lat': 23.811378365396163,'lng':90.41298508644104},]
     #default_ui = True
 
     def double_click_zoom(self):
